@@ -5,6 +5,8 @@
 
 const swiper = new Swiper(".front-slider", {
   slidesPerView: "auto",
+  speed: 800,
+  effect: 'coverflow',
   spaceBetween: 10,
   navigation: {
     nextEl: ".swiper-button-next",

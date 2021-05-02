@@ -137,3 +137,29 @@ function custom_register_post_types() {
 }
 add_action('init', 'custom_register_post_types');
 
+function build_custom_category_tree ($activeCatId, $activeParentId, $parentId = 0) {
+
+    $output = '';
+    $terms = get_terms( array(
+        'taxonomy' => 'category',
+        'hide_empty' => true,
+        'hierarchical' => true,
+        'parent' => $parentId
+    ) );
+
+    if (count($terms)) {
+
+        $output .= '<ul>';
+
+        foreach ($terms as $term) {
+            $output .= '<li class="custom-cat' . ($term->term_id === $activeParentId || $term->term_id === $activeCatId ? ' active' : '') . '">';
+            $output .=  '<a href="' . $term->slug . '">' . $term->name . '</a>';
+            $output .=  build_custom_category_tree($activeCatId, $activeParentId, $term->term_id);
+            $output .= '</li>';
+        }
+
+        $output .= '</ul>';
+    }
+
+    return $output;
+}
