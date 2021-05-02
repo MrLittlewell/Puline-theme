@@ -38,3 +38,102 @@ add_action( 'after_setup_theme', function(){
     )
   );
 } );
+
+add_action('init', 'create_taxonomy');
+function create_taxonomy () {
+    register_taxonomy( 'category', [ 'products' ], [
+        'label'                 => __( 'category' ),
+        'rewrite'               => [ 'slug' => 'category' ],
+        'labels'                => [
+            'name'              => 'Категории',
+            'singular_name'     => 'Категории',
+            'search_items'      => 'найти категорию',
+            'all_items'         => 'Все категории',
+            'view_item '        => 'Смотреть категорию',
+            'parent_item'       => 'Родитель категории',
+            'parent_item_colon' => 'Родитель категории:',
+            'edit_item'         => 'Редактировать категорию',
+            'update_item'       => 'Обновить категорию',
+            'add_new_item'      => 'Добавить новую категорию',
+            'new_item_name'     => 'Добавить новую категорию',
+            'menu_name'         => 'Категории',
+        ],
+        'public'                => true,
+        'hierarchical'          => true,
+        'capabilities'          => [],
+        'meta_box_cb'           => null,
+        'show_admin_column'     => true,
+        'show_in_rest'          => true,
+        'show_ui'               => true,
+        'publicly_queryable'    => true,
+        'update_count_callback' => '_update_post_term_count',
+        'query_var'             => true,
+    ] );
+}
+function custom_register_post_types() {
+
+    $post_types = [
+        [
+            "post_type_name"        => "products",
+            "name"                  => "Товар",
+            "name_plural"           => "Товары",
+            "name_lowercase"        => "Товар",
+            "name_lowercase_plural" => "Товар",
+            'menu_icon'             => 'dashicons-businessman',
+            "supports"              => [
+                'title',
+                'editor',
+                'thumbnail',
+                'author',
+                'excerpt',
+                'revisions',
+                'post_formats'
+            ],
+            "has_archive"           => false,
+            "taxonomies"            => [
+                'categories',
+            ]
+        ],
+    ];
+
+
+    foreach ( $post_types as $post_type ) {
+        $post_type_args = [
+            'labels'        => [
+                'name'                     => ( $post_type["name_plural"] ),
+                'singular_name'            => ( $post_type["name"] ),
+                'add_new'                  => ( 'Добавить новый ' . $post_type["name"] ),
+                'add_new_item'             => ( 'Добавить новый ' . $post_type["name"] ),
+                'edit_item'                => ( 'Редактировать ' . $post_type["name"] ),
+                'new_item'                 => ( 'Новое ' . $post_type["name"] ),
+                'view_item'                => ( 'Смотреть ' . $post_type["name"] ),
+                'view_items'               => ( 'Смотреть ' . $post_type["name_plural"] ),
+                'search_items'             => ( 'Искать ' . $post_type["name_plural"] ),
+                'not_found'                => ( 'Не найдено ' . $post_type["name_lowercase_plural"] . ' found' ),
+                'not_found_in_trash'       => ( 'Не найдено ' . $post_type["name_lowercase_plural"] . ' found in Trash' ),
+                'all_items'                => ( 'Все ' . $post_type["name_plural"] ),
+                'archives'                 => ( $post_type["name"] . ' Archives' ),
+                'attributes'               => ( $post_type["name"] . ' Attributes' ),
+                'insert_into_item'         => ( 'Insert into ' . $post_type["name_lowercase"] ),
+                'uploaded_to_this_item'    => ( 'Uploaded to this ' . $post_type["name_lowercase"] ),
+                'item_published '          => ( $post_type["name"] . ' published.' ),
+                'item_published_privately' => ( $post_type["name"] . ' published privately.' ),
+                'item_reverted_to_draft'   => ( $post_type["name"] . ' reverted to draft.' ),
+                'item_scheduled'           => ( $post_type["name"] . ' scheduled.' ),
+                'item_updated'             => __( $post_type["name"] . ' updated.' ),
+            ],
+            'menu_icon'     => $post_type['menu_icon'],
+            'public'        => true,
+            'has_archive'   => $post_type["has_archive"],
+            'menu_position' => 5,
+            'show_in_rest'  => true,
+            'supports'      => $post_type["supports"],
+            'taxonomies'    => $post_type["taxonomies"] ?? [],
+
+        ];
+
+        register_post_type( $post_type["post_type_name"], $post_type_args );
+    }
+}
+add_action('init', 'custom_register_post_types');
+
