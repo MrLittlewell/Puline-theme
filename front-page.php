@@ -8,12 +8,16 @@ $slider = get_field('main-slider', 8);
      <div class="swiper-container front-slider">
       <div class="swiper-wrapper">
         <?php foreach ($slider as $slide) { 
-          foreach ($slide as $item) { ?>
+          ?>
           <div class="swiper-slide">
-         
-            <img src="<?php  var_dump($item);?>" alt="">
+            <p><?php echo $slide['title']?></p>
+            <p><?php echo $slide['description']?></p>
+              <?php if ($slide['link']) {?>
+              <a href="<?php echo $slide['link']?>">подробнее</a>
+              <?php }?>
+            <img src="<?php echo $slide['image']['url'];?>" alt="">
           </div>
-        <?php }}?>
+        <?php }?>
       </div>
       <div class="swiper-pagination"></div>
       <div class="swiper-button-next"></div>
