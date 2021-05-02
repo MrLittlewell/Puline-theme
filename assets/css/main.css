@@ -15,7 +15,7 @@ a {
 
 #main-wrapper {
   padding-left: 5rem;
-  padding-top: 3.325rem;
+  padding-top: 5.325rem;
 }
 
 .flyout-trigger {
@@ -139,4 +139,7 @@ a {
 
 .front-slider img{
   height: 90vh;
+}
+.front-slider .swiper-slide {
+  width: 85%;
 }

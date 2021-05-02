@@ -1,17 +1,19 @@
 <?php get_header(); ?>
+<?php 
+$slider = get_field('main-slider', 8);
+
+?>
  <main>
    <section>
      <div class="swiper-container front-slider">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="https://www.boconcept.com/on/demandware.static/-/Library-Sites-BoConceptSharedLibrary/default/dw4c440519/images/activities/apr-jun-21/1659405-hero-L.jpg" alt="">
-        </div>
-        <div class="swiper-slide">
-          <img src="https://www.boconcept.com/on/demandware.static/-/Library-Sites-BoConceptSharedLibrary/default/dwa1feb7ca/images/activities/apr-jun-21/1481897-hero-L.jpg" alt="">
-        </div>
-        <div class="swiper-slide">
-          <img src="https://www.boconcept.com/on/demandware.static/-/Library-Sites-BoConceptSharedLibrary/default/dw5922766b/images/activities/apr-jun-21/1659409-hero-L.jpg" alt="">
-        </div>
+        <?php foreach ($slider as $slide) { 
+          foreach ($slide as $item) { ?>
+          <div class="swiper-slide">
+         
+            <img src="<?php  var_dump($item);?>" alt="">
+          </div>
+        <?php }}?>
       </div>
       <div class="swiper-pagination"></div>
       <div class="swiper-button-next"></div>
