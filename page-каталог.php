@@ -5,11 +5,6 @@ $categories = get_terms([
     'hide_empty' => true,
     'post_per_page' => -1,
 ]);
-
-
-echo "<pre>";
-var_dump($categories);
-echo "</pre>";
 ?>
 <section>
     <div class="catalog">
