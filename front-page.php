@@ -66,9 +66,9 @@ $slider = get_field('main-slider', 8);
         <?php
         $general_info = get_field('general_info', 8);
         ?>
-        <p><?= $general_info['subheadline'] ?></p>
-        <p><?= $general_info['headline'] ?></p>
-        <p><?= $general_info['description'] ?></p>
+        <div class="general_info_subheadline"><?= $general_info['subheadline'] ?></div>
+        <div class="general_info_headline"><?= $general_info['headline'] ?></div>
+        <div class="general_info_description"><?= $general_info['description'] ?></div>
       </div>
     </div>
   </section>
