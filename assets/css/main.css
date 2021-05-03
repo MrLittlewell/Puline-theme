@@ -16,7 +16,7 @@ a {
 
 #main-wrapper {
   padding-left: 5rem;
-  padding-top: 5.325rem;
+  padding-top: 5.525rem;
 }
 
 .flyout-trigger {
@@ -122,6 +122,7 @@ a {
   top: 0;
   right: 0;
   transition: background .5s ease;
+  border-bottom: 0.01rem solid #dfdfdf;
 }
 
 .header__top ul {
@@ -345,12 +346,6 @@ a {
   text-transform: uppercase;
 }
 
-@media (min-width: 48em){
-  .general_info_subheadline {
-    margin: 1.875rem auto 0;
-  }
-}
-
 .general_info_headline {
   font-size: 5vw;
   line-height: 1.34375;
@@ -361,8 +356,76 @@ a {
   margin: 1.25rem auto 0;
 }
 
-@media (min-width: 48em) {
+.general_info_description {
+  text-align: center;
+  font-size: .875rem;
+  line-height: 1.7142857143;
+  letter-spacing: .05em;
+  margin: 1.25rem auto 0;
+}
+.catalog-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 0
+}
+.catalog-items .image-wrapper {
+  overflow: hidden;
+  width: 360px;
+  height: 360px;
+}
+.catalog-items a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.catalog-items .catalog-item-image {
+  width: 100%;
+  object-fit: cover;
+  transition: all .3s ease-in-out;
+}
+.catalog-items a:hover .catalog-item-image {
+  transform: scale(1.15);
+}
+.catalog-item-title {
+  color: #333;
+  font-size: 20px;
+  font-weight: 200;
+  font-family: 'Montserrat Alternates', sans-serif;
+  background: #dee0d6;
+  margin: 0;
+  padding: 5px 0;
+  width: 100%;
+  text-align: center;
+  transition: all .3s ease-in-out;
+  margin-top: -40px;
+  position: relative;
+  z-index: 100;
+}
+
+.catalog-items a:hover .catalog-item-title {
+  background: #dee0d650;
+  color: #000;
+}
+
+#catalog h1,
+#category h1 {
+  text-align: center;
+  color: #333;
+  font-weight: 500;
+  font-size: 40px;
+  margin-top: 0;
+}
+#catalog,
+#category {
+  padding: 40px 0;
+  /* background-image: url(https://www.dlf.pt/dfpng/middlepng/407-4073732_lines-line-colage-minimalism-design-aesthetic-minimalist-aesthetic.png); */
+}
+/* @media (min-width: 48em) {
   .general_info_headline {
+    margin: 1.875rem auto 0;
+  }
+  .general_info_subheadline {
     margin: 1.875rem auto 0;
   }
 }
@@ -385,13 +448,6 @@ a {
   }
 }
 
-.general_info_description {
-  text-align: center;
-  font-size: .875rem;
-  line-height: 1.7142857143;
-  letter-spacing: .05em;
-  margin: 1.25rem auto 0;
-}
 
 @media (min-width: 48em) {
   .general_info_description {
@@ -403,4 +459,4 @@ a {
   .general_info_description {
     max-width: 75%;
   }
-}
+} */
