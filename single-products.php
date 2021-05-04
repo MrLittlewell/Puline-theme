@@ -2,20 +2,15 @@
     <section>
         <div class="catalog">
             <?php
-            $args = [
-                'post_type' => 'products',
-                'post_per_page' => -1,
-            ];
-            $products = get_posts($args);
+            $id = get_the_ID();
+            $post = get_post($id);
             ?>
-            <?php
-            if ($products) :
-                foreach ($products as $product) : ?>
+            <?php if ($post) : ?>
                     <?php
-                    $images = get_field('gallery', $product->ID);
-                    $article = get_field('article', $product->ID);
-                    $price = get_field('price', $product->ID);
-                    $description = get_field('description', $product->ID);
+                    $images = get_field('gallery', $post->ID);
+                    $article = get_field('article', $post->ID);
+                    $price = get_field('price', $post->ID);
+                    $description = get_field('description', $post->ID);
                     ?>
                     <div class="catalog__single_product">
                         <div class="catalog__single_product__gallery">
@@ -26,10 +21,10 @@
                             <?php endif; ?>
                         </div>
                         <div class="catalog__single_product__info">
-                            <div class="catalog__single_product_title">  <?= $product->post_title ?? '' ?> </div>
+                            <div class="catalog__single_product_title">  <?= $post->post_title ?? '' ?> </div>
                             <div class="catalog__single_product_article"> <?= $article ?? '' ?> </div>
                             <?php
-                            $productCategories = get_the_terms($product->ID, 'category');
+                            $productCategories = get_the_terms($post->ID, 'category');
                             ?>
                             <div class="catalog__single_product_categories"> Категории:
                                 <?php if ($productCategories) : ?>
@@ -47,7 +42,6 @@
                             <div class="catalog__single_product_description"> <?= $description ?? '' ?> </div>
                         </div>
                     </div>
-                <?php endforeach ?>
             <?php endif ?>
         </div>
     </section>
