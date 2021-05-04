@@ -30,7 +30,9 @@
                                 <?php if ($productCategories) : ?>
                                     <?php $countCategories = count($productCategories) ?>
                                     <?php foreach ($productCategories as $categories) : ?>
-                                        <?php echo $categories->name ?? '' ?>
+                                        <a href="<?= get_term_link($categories->term_id, 'category');?>">
+                                        <?= $categories->name ?? '' ?>
+                                        </a>
                                         <?php
                                         if ($countCategories > 1) echo ',';
                                         $countCategories--;
