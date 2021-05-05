@@ -12,6 +12,7 @@ function puline_scripts_styles(){
   // Подключаем файл с JS скриптом
   wp_enqueue_script( 'jquery_js', get_template_directory_uri() . '/assets/js/jquery.js', array(), '1.0', true);
   wp_enqueue_script( 'swiper_js', get_template_directory_uri() . '/assets/js/swiper.js', array(), '1.0', true);
+  wp_enqueue_script( 'parallax', get_template_directory_uri() . '/assets/js/parallax.js', array(), '1.0', true);
   wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true);
 }
 

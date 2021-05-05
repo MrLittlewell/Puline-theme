@@ -16,7 +16,7 @@ a {
 
 #main-wrapper {
   padding-left: 5rem;
-  padding-top: 5.525rem;
+  padding-top: 5.535rem;
 }
 
 .flyout-trigger {
@@ -246,12 +246,12 @@ a {
 .flyout-menu {
   position: absolute;
   width: 50%;
-  height: calc(100% - 5rem);
+  height: calc(100% - 5.5rem);
   bottom: 0;
   left: -50%;
   transition: all .5s cubic-bezier(.42,0,.58,1);
   background-color: #fbfbfb;
-  z-index: 100;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,11 +289,11 @@ a {
 .main-feature-container .right-block img {
   width: 100%;
   object-fit: cover;
-  transition: all .3s ease-in-out;
+  transition: all 6s ease-in-out;
 }
 .main-feature-container .left-block img:hover,
 .main-feature-container .right-block img:hover {
-  transform: scale(1.15);
+  transform: scale(1.3);
 }
 .main-feature-container .left-block .info-content{
   padding: 0 calc(3% + 7.5rem) 10rem 4.375rem;
@@ -365,13 +365,16 @@ a {
 }
 .catalog-items {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px 0
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 1px
+}
+.catalog-item {
+  position: relative;
 }
 .catalog-items .image-wrapper {
   overflow: hidden;
-  width: 360px;
-  height: 360px;
+  width: auto;
+  max-height: 360px;
 }
 .catalog-items a {
   display: flex;
@@ -386,28 +389,36 @@ a {
 }
 .catalog-items a:hover .catalog-item-image {
   transform: scale(1.15);
+  /* filter: opacity(0.5); */
 }
 .catalog-item-title {
   color: #333;
   font-size: 20px;
-  font-weight: 200;
+  font-weight: 300;
   font-family: 'Montserrat Alternates', sans-serif;
-  background: #dee0d6;
+  background: #000000bb;
+  color: #fff;
   margin: 0;
   padding: 5px 0;
   width: 100%;
   text-align: center;
-  transition: all .3s ease-in-out;
-  margin-top: -40px;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   z-index: 100;
+  transition: all .3s ease-in-out;
 }
 
+.catalog-item-description {
+  font-size: 13px;
+  padding: 0 10px;
+  margin: 3px 0;
+  text-align: left;
+}
 .catalog-items a:hover .catalog-item-title {
-  background: #dee0d650;
-  color: #000;
+  background: #000000bb;
+  color: #dcd5cc;
+  height: auto;
 }
-
 #catalog h1,
 #category h1 {
   text-align: center;
@@ -420,6 +431,67 @@ a {
 #category {
   padding: 40px 0;
   /* background-image: url(https://www.dlf.pt/dfpng/middlepng/407-4073732_lines-line-colage-minimalism-design-aesthetic-minimalist-aesthetic.png); */
+}
+.page-thumb {
+  margin-top: -40px;
+  height: 400px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.page-thumb h1 {
+  font-weight: 300!important;
+}
+
+#category .category-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 3px;
+  margin-top: 80px;
+}
+.category-item .image-wrapper {
+  display: flex;
+}
+.category-item .image-wrapper img {
+  object-fit: cover;
+  height: 400px;
+  width: 100%;
+}
+
+.category-item .product-info {
+  padding: 5px 1.875rem 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background-color: #d9d3c71c;
+}
+.category-item .product-info .name {
+  width: 100%;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.category-item .product-info .name  a {
+  color: #000;
+  letter-spacing: 4px;
+  word-spacing: 1px;
+}
+.category-item .product-info .article,
+.category-item .product-info .price {
+  width: 50%;
+}
+.category-item .product-info .price {
+  text-align: right;
+}
+.price-name {
+  color: #888;
+  font-size: 14px;
+}
+.product-info .article {
+  color: #888;
+  font-size: 14px;
 }
 /* @media (min-width: 48em) {
   .general_info_headline {
