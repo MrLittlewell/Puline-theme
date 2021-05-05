@@ -3,6 +3,30 @@
     "title": "Информация",
     "fields": [
         {
+            "key": "field_6092c7fed4985",
+            "label": "Картинка",
+            "name": "image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_609185acc4ded",
             "label": "Вкладки",
             "name": "tabs",
@@ -119,5 +143,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1620150773
+    "modified": 1620232215
 }

@@ -1,11 +1,17 @@
 <?php get_header(); ?>
 <?php
 $tabs = get_field('tabs');
+$image = get_field('image');
 ?>
 <section>
     <?php if ($tabs) : ?>
         <?php foreach ($tabs as $tab) : ?>
             <div class="information-page">
+                <div class="information-page_image">
+                    <?php if ($image) : ?>
+                        <img src="<?= $image['url'] ?>" alt="">
+                    <?php endif ?>
+                </div>
                 <div class="information-page_title"><?= $tab['page_title'] ?></div>
                 <div class="information-page_content">
                     <?php if ($tab['content']) : ?>

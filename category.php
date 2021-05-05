@@ -13,32 +13,41 @@ $args = array(
     ),
 );
 $singleCategory = get_posts($args);
+$categoryId = get_queried_object_id();
+$categoryImage = get_taxonomy_image($categoryId);
 ?>
 
- <section id="category">
-   <h1><?php single_cat_title(); ?></h1>
-     <div>
-         <?php foreach ($singleCategory as $item) : ?>
-             <?php
-             $images = get_field('gallery', $item->ID);
-             $article = get_field('article', $item->ID);
-             $price = get_field('price', $item->ID);
-             $description = get_field('description', $item->ID);
-             ?>
-         <div class="catalog-item">
-             <a href="<?php the_permalink($item->ID)?>">
-                 <div class="image-wrapper">
-                     <?php if ($images): ?>
-                             <img src="<?= $images[0]['url'] ?>" alt="">
-                     <?php endif; ?>
-                 </div>
-                 <p class=""><?= $item->post_title ?></p>
-                 <div class=""> <?= $article ?? '' ?> </div>
-                 <div class=""> <?= $price ?? '' ?> </div>
-             </a>
-         </div>
-    <?php endforeach;?>
-     </div>
- </section>
+    <section id="category">
+        <h1><?php single_cat_title(); ?></h1>
+        <div>
+
+            <div class="category-image">
+                <?php if ($categoryImage): ?>
+                    <img src="<?= $categoryImage ?>" alt="">
+                <?php endif; ?>
+            </div>
+            <?php foreach ($singleCategory as $item) : ?>
+                <?php
+                $images = get_field('gallery', $item->ID);
+                $article = get_field('article', $item->ID);
+                $price = get_field('price', $item->ID);
+                $description = get_field('description', $item->ID);
+                ?>
+
+                <div class="catalog-item">
+                    <a href="<?php the_permalink($item->ID) ?>">
+                        <div class="image-wrapper">
+                            <?php if ($images): ?>
+                                <img src="<?= $images[0]['url'] ?>" alt="">
+                            <?php endif; ?>
+                        </div>
+                        <p class=""><?= $item->post_title ?></p>
+                        <div class=""> <?= $article ?? '' ?> </div>
+                        <div class=""> <?= $price ?? '' ?> </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
 
 <?php get_footer(); ?>
