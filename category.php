@@ -27,8 +27,11 @@ $categoryImage = get_taxonomy_image($categoryId);
     <h1><?php single_cat_title(); ?></h1>
   </div>
  
+  <div class="container-l filter-buttons">
+      <button>Category 1</button>
+      <button>Category 2</button>
+    </div>
   <div class="category-items container-l">
-
     <?php foreach ($singleCategory as $item) : ?>
       <?php
       $images = get_field('gallery', $item->ID);
@@ -41,6 +44,8 @@ $categoryImage = get_taxonomy_image($categoryId);
           <div class="image-wrapper">
             <?php if ($images) : ?>
               <img src="<?= $images[0]['url'] ?>" alt="">
+            <?php else : ?>
+              <img src="http://localhost:8080/wp-content/themes/Puline/assets/images/no-found.png" alt="">
             <?php endif; ?>
           </div>
         </a>
@@ -52,7 +57,7 @@ $categoryImage = get_taxonomy_image($categoryId);
           </div>
           <div class="article"><?= $article ?? '' ?></div>
           <div class="price">
-            <span class="price-name">Цена:</span>
+            <span class="price-name">Цена от:</span>
             <?= $price ?? '' ?> BYN</div>
         </div>
       </div>

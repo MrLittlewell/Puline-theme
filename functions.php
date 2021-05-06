@@ -2,17 +2,21 @@
 function puline_scripts_styles(){
 
   // Регистрирую стили
-  wp_register_style( 'my_style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.2', 'screen');
   wp_register_style( 'swiper_css', get_template_directory_uri() . '/assets/css/swiper.css', array(), '1.0', 'screen');
+  wp_register_style( 'lightgallery', get_template_directory_uri() . '/assets/css/lightGallery.css', array(), '1.0', 'screen');
+  wp_register_style( 'my_style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.2', 'screen');
+  
 
   // Подключаю стили
-  wp_enqueue_style( 'my_style');
   wp_enqueue_style( 'swiper_css');
+  wp_enqueue_style( 'lightgallery');
+  wp_enqueue_style( 'my_style');
 
   // Подключаем файл с JS скриптом
   wp_enqueue_script( 'jquery_js', get_template_directory_uri() . '/assets/js/jquery.js', array(), '1.0', true);
   wp_enqueue_script( 'swiper_js', get_template_directory_uri() . '/assets/js/swiper.js', array(), '1.0', true);
   wp_enqueue_script( 'parallax', get_template_directory_uri() . '/assets/js/parallax.js', array(), '1.0', true);
+  wp_enqueue_script( 'lightGalleryJs', get_template_directory_uri() . '/assets/js/lightGallery.js', array(), '1.0', true);
   wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true);
 }
 
