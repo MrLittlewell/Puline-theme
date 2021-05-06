@@ -22,6 +22,21 @@ $(document).ready(function() {
       clickable: true,
     },
   });
+
+  $('.favorite__icon').click(function() {
+    const stuffId = this.dataset.id;
+    const hasFavorites = localStorage.getItem('favorites');
+    if(hasFavorites !== null) {
+      let arr = JSON.parse(hasFavorites)
+      const combine = [...arr, stuffId];
+      let uniqueItems = [...new Set(combine)];
+      const update = JSON.stringify(uniqueItems);
+      localStorage.setItem('favorites', update);
+    } else {
+      const init = JSON.stringify([stuffId]);
+      localStorage.setItem('favorites', init);
+    }
+  })
 });
 
 
