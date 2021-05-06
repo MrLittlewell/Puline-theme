@@ -4,6 +4,7 @@ $theSlug = get_queried_object()->slug;
 
 $args = array(
   'post_type' => 'products',
+  'numberposts' => 9,
   'tax_query' => array(
     array(
       'taxonomy' => 'category',
