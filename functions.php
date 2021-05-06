@@ -74,6 +74,35 @@ function create_taxonomy () {
         'update_count_callback' => '_update_post_term_count',
         'query_var'             => true,
     ] );
+
+    register_taxonomy( 'coatings', [ 'products' ], [
+        'label'                 => __( 'coatings' ),
+        'rewrite'               => [ 'slug' => 'coatings' ],
+        'labels'                => [
+            'name'              => 'Покрытии',
+            'singular_name'     => 'Покрытии',
+            'search_items'      => 'Найти покрытие',
+            'all_items'         => 'Все покрытии',
+            'view_item '        => 'Смотреть покрытие',
+            'parent_item'       => 'Родитель покрытия',
+            'parent_item_colon' => 'Родитель покрытия:',
+            'edit_item'         => 'Редактировать покрытие',
+            'update_item'       => 'Обновить покрытие',
+            'add_new_item'      => 'Добавить новое покрытие',
+            'new_item_name'     => 'Добавить новое покрытие',
+            'menu_name'         => 'Покрытии',
+        ],
+        'public'                => true,
+        'hierarchical'          => true,
+        'capabilities'          => [],
+        'meta_box_cb'           => null,
+        'show_admin_column'     => true,
+        'show_in_rest'          => true,
+        'show_ui'               => true,
+        'publicly_queryable'    => true,
+        'update_count_callback' => '_update_post_term_count',
+        'query_var'             => true,
+    ] );
 }
 function custom_register_post_types() {
 
@@ -97,9 +126,32 @@ function custom_register_post_types() {
             "has_archive"           => false,
             "taxonomies"            => [
                 'categories',
+                'coatings',
             ]
         ],
+        [
+            "post_type_name"        => "material",
+            "name"                  => "Материал",
+            "name_plural"           => "Материалы",
+            "name_lowercase"        => "Материал",
+            "name_lowercase_plural" => "Материал",
+            'menu_icon'             => 'dashicons-businessman',
+            "supports"              => [
+                'title',
+                'editor',
+                'thumbnail',
+                'author',
+                'excerpt',
+                'revisions',
+                'post_formats'
+            ],
+            "has_archive"           => false,
+        ],
     ];
+
+
+
+
 
 
     foreach ( $post_types as $post_type ) {
@@ -168,3 +220,17 @@ function build_custom_category_tree ($activeCatId, $activeParentId, $parentId = 
 
     return $output;
 }
+
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title'   => 'Theme General Settings',
+        'menu_title'  => 'Глобальные настройки',
+        'menu_slug'   => 'theme-general-settings',
+        'capability'  => 'edit_posts',
+        'redirect'    => false
+    ));
+
+}
+
+add_theme_support( 'editor-styles');
