@@ -27,7 +27,7 @@
           <?php
           $productCategories = get_the_terms($post->ID, 'category');
           ?>
-          <div class="single_product_categories"> Категории:
+          <div class="single_product_categories">
             <?php if ($productCategories) : ?>
               <?php $countCategories = count($productCategories) ?>
               <?php foreach ($productCategories as $categories) : ?>

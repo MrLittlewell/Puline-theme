@@ -447,28 +447,7 @@ a {
 .page-thumb h1 {
   font-weight: 300!important;
 }
-.filter-buttons {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 7px
-}
-.filter-buttons button {
-  background-color: transparent;
-  box-shadow: none;
-  border: 1px solid #858181;
-  color: #858181;
-  border-radius: 3px;
-  padding: 5px 8px;
-  cursor: pointer;
-  transition: all .3s ease-in-out;
-  outline: none;
-  user-select: none;   
-}
-.filter-buttons button:hover {
-  background-color: #d9d3c71c;
-  color: #333;
-  border-color: #333;
-}
+
 #category .category-items {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -486,6 +465,8 @@ a {
   object-fit: cover;
   height: 400px;
   width: 100%;
+  user-select: none;
+
 }
 .favorite__icon {
   position: absolute;
@@ -542,7 +523,7 @@ a {
 }
 .single_product {
   display: grid;
-  grid-template-columns: 1.4fr .6fr;
+  grid-template-columns: 1.2fr .8fr;
   gap: 20px;
 }
 .single_product_title {
@@ -552,6 +533,19 @@ a {
   line-height: 1;
   font-weight: 700;
   text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.single_product_categories {
+  line-height: 12px;
+  margin-bottom: 10px;
+  width: 70%;
+}
+.single_product_categories a {
+  font-size: 10px;
+  color: #444;
+}
+.single_product_categories a:hover {
+  color: #111;
 }
 .single_product__gallery {
   padding: 0;
@@ -560,6 +554,9 @@ a {
 }
 .single_product__gallery img {
   width: 100%;
+  max-height: 80vh;
+  object-fit: cover;
+  cursor: pointer;
 }
 .single_product_description {
   margin-top: 40px;
@@ -571,6 +568,35 @@ footer {
  height: 300px; 
  background-color: #E9EAEC;
  margin-top: 40px;
+}
+.category-wrapper {
+  display: flex;
+}
+.filter-buttons {
+  display: flex;
+  gap: 7px;
+  margin-top: 0;
+  margin-right: 10px;
+  flex-direction: column;
+  width: 350px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 7px;
+}
+.filter-buttons li {
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 13px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.filter-buttons li svg {
+  width: 13px;
+  margin-left: 10px;
 }
 /* @media (min-width: 48em) {
   .general_info_headline {
