@@ -4,6 +4,14 @@ $(document).ready(function() {
     mode: 'fade',
   }); 
 
+  $('select').niceSelect();
+
+  $('.variables-select-wrapper select').change(function() {
+    const findValue = $('.nice-select .option.selected').attr('idx');
+    $('.selected-price').hide();
+    $(`.selected-price[idx=${findValue}]`).show()
+  })
+
   $('.flyout-trigger').click(function() {
     $('#header').toggleClass('flyout-shown')
   });
