@@ -37,6 +37,38 @@ $(document).ready(function() {
       localStorage.setItem('favorites', init);
     }
   })
+
+
+  let underCategory = 'test';
+  let classUnderCategory = $('.under-category span');
+
+  const handleCheckListItem = (parent) => {
+    parent.siblings('.checked').removeClass('checked')
+    parent.toggleClass('checked');
+  }
+
+  classUnderCategory.click(function (e) {
+    handleCheckListItem($(this))
+    underCategory = $(this).text();
+  });
+
+
+
+  classUnderCategory.click(function () {
+    return $.ajax({
+      type: 'POST',
+      url: ajax.ajaxurl,
+      data: {
+        action: 'searchСategory',
+        underCategory: underCategory,
+        parent: $('h1').text(),
+      },
+      success: function (res) {
+        $('.search-category').html(res);
+      }
+    })
+  });
+
 });
 
 
