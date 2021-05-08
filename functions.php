@@ -1,11 +1,13 @@
 <?php
+
+use function App\template;
+
 function puline_scripts_styles(){
 
   // Регистрирую стили
   wp_register_style( 'swiper_css', get_template_directory_uri() . '/assets/css/swiper.css', array(), '1.0', 'screen');
   wp_register_style( 'lightgallery', get_template_directory_uri() . '/assets/css/lightGallery.css', array(), '1.0', 'screen');
   wp_register_style( 'my_style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.2', 'screen');
-  
 
   // Подключаю стили
   wp_enqueue_style( 'swiper_css');
@@ -18,6 +20,9 @@ function puline_scripts_styles(){
   wp_enqueue_script( 'parallax', get_template_directory_uri() . '/assets/js/parallax.js', array(), '1.0', true);
   wp_enqueue_script( 'lightGalleryJs', get_template_directory_uri() . '/assets/js/lightGallery.js', array(), '1.0', true);
   wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true);
+  wp_localize_script('main', 'ajax', [
+    'ajaxurl' => admin_url('admin-ajax.php'),
+  ]);
 }
 
 add_action( 'wp_enqueue_scripts', 'puline_scripts_styles', 1 );
@@ -234,3 +239,42 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 add_theme_support( 'editor-styles');
+
+function searchСategory() {
+
+  $underCategory = $_POST['underCategory'];
+  $currentCategory = $_POST['parent'];
+
+
+
+
+  if ($underCategory === $currentCategory) {
+    $currentCategory = $_POST['parent'];
+  } else {
+    $currentCategory = $_POST['underCategory'];
+  }
+
+
+
+  $args = array(
+    'post_type' => 'products',
+    'numberposts' => 8,
+    'tax_query' => array(
+      array(
+        'taxonomy' => 'category',
+        'field' => 'slug',
+        'terms' => $currentCategory,
+      )
+    ),
+  );
+
+  $singleCategory = get_posts($args);
+
+  echo include 'search-category.php';
+
+  wp_die();
+}
+
+
+add_action( 'wp_ajax_searchСategory', 'searchСategory' );
+add_action( 'wp_ajax_nopriv_searchСategory', 'searchСategory' );
