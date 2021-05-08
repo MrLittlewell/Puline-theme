@@ -7,6 +7,8 @@
             ?>
             <?php if ($post) : ?>
                 <?php
+
+                $label = get_field('label');
                 $coatings = get_the_terms($post->ID, 'coatings');
                 $hardware_price = get_field('hardware_price', $post->ID);
                 $extra_charge = get_field('single_extra_charge', $post->ID);
@@ -31,6 +33,9 @@
                 ?>
                 <div class="single_product">
                     <ul class="single_product__gallery">
+                      <div>
+                          <?= $label    ?>
+                      </div>
                         <?php if ($images) : ?>
                             <?php foreach ($images as $image) : ?>
                                 <li data-src="<?= $image['url'] ?>">
