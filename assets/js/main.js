@@ -47,7 +47,6 @@ $(document).ready(function() {
   })
 
 
-  let underCategory = 'test';
   let classUnderCategory = $('.under-category span');
 
   const handleCheckListItem = (parent) => {
@@ -55,14 +54,11 @@ $(document).ready(function() {
     parent.toggleClass('checked');
   }
 
-  classUnderCategory.click(function (e) {
+  classUnderCategory.click(function () {
+
     handleCheckListItem($(this))
     underCategory = $(this).text();
-  });
 
-
-
-  classUnderCategory.click(function () {
     return $.ajax({
       type: 'POST',
       url: ajax.ajaxurl,

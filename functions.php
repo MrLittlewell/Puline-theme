@@ -1,7 +1,5 @@
 <?php
 
-use function App\template;
-
 function puline_scripts_styles(){
   wp_register_style( 'swiper_css', get_template_directory_uri() . '/assets/css/swiper.css', array(), '1.0', 'screen');
   wp_register_style( 'lightgallery', get_template_directory_uri() . '/assets/css/lightGallery.css', array(), '1.0', 'screen');
@@ -16,6 +14,9 @@ function puline_scripts_styles(){
   wp_enqueue_script( 'jquery_js', get_template_directory_uri() . '/assets/js/jquery.js', array(), '1.0', true);
   wp_enqueue_script( 'plugins', get_template_directory_uri() . '/assets/js/plugins.js', array(), '1.0', true);
   wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true);
+  wp_localize_script('main', 'ajax', [
+    'ajaxurl' => admin_url('admin-ajax.php'),
+  ]);
   
 }
 
@@ -239,16 +240,11 @@ function searchСategory() {
   $underCategory = $_POST['underCategory'];
   $currentCategory = $_POST['parent'];
 
-
-
-
   if ($underCategory === $currentCategory) {
     $currentCategory = $_POST['parent'];
   } else {
     $currentCategory = $_POST['underCategory'];
   }
-
-
 
   $args = array(
     'post_type' => 'products',
@@ -262,7 +258,7 @@ function searchСategory() {
     ),
   );
 
-  $singleCategory = get_posts($args);
+  get_posts($args);
 
   echo include 'search-category.php';
 
