@@ -5,7 +5,7 @@
         {
             "key": "field_60943dcdefb93",
             "label": "Укажите наценку",
-            "name": "global_markup",
+            "name": "extra_charge",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -41,5 +41,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1620328698
+    "modified": 1620452696
 }
