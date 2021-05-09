@@ -33,7 +33,7 @@ $categories = get_categories($args);
     <?php if ($categories) : ?>
       <div class="stiky-wrapper">
         <ul class="filter-buttons">
-          <li class="under-category">
+          <li class="under-category active">
             <span data-slug="all">
               Все
             </span>

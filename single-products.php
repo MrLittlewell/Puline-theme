@@ -168,14 +168,17 @@
               <div class="selected-price" idx="<?= $j++ ?>">
                 <?= round($price) ?> BYN
               </div>
-            <?php endforeach; ?> </div>
+            <?php endforeach; ?>                  
+          </div>
+          <button class="product-order-button">
+            заказать
+          </button>
         </div>
-      </div>
-      <div class="single_product_description">
+    <?php endif ?>
+  </div>
+  <div class="single_product_description">
         <h3>Описание</h3>
         <?= $description ?? '' ?>
       </div>
-    <?php endif ?>
-  </div>
 </section>
 <?php get_footer(); ?>

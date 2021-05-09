@@ -48,13 +48,13 @@ $(document).ready(function() {
 
   let classUnderCategory = $('.under-category span');
   const handleCheckListItem = (parent) => {
-    parent.siblings('.checked').removeClass('checked')
-    parent.toggleClass('checked');
+    parent.siblings('.active').removeClass('active')
+    parent.addClass('active');
   }
 
   classUnderCategory.click(function () {
 
-    handleCheckListItem($(this))
+    handleCheckListItem($(this).parent('li'))
     underCategory = $(this).attr('data-slug');
 
     return $.ajax({
@@ -66,8 +66,8 @@ $(document).ready(function() {
         parent: $('h1').attr('data-slug'),
       },
       beforeSend: function() {
-        $('.search-category').html(`<?xml version="1.0" encoding="utf-8"?>
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="104px" height="104px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        $('.search-category').html(`
+        <svg style="margin: auto; background: none; display: block; shape-rendering: auto;" width="104px" height="104px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
         <circle cx="50" cy="50" r="18" stroke-width="3" stroke="#53585a" stroke-dasharray="28.274333882308138 28.274333882308138" fill="none" stroke-linecap="round">
           <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
         </circle>

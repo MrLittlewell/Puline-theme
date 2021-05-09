@@ -250,8 +250,11 @@ function searchСategory() {
     ),
   );
 
+
   $singleCategory = get_posts($args);
-  echo include 'search-category.php';
+
+  include 'search-category.php';
+
   wp_die();
 }
 
