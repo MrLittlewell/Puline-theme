@@ -28,36 +28,42 @@ $categories = get_categories($args);
                                                                                                   endif; ?>">
     <h1 data-slug="<?= $theSlug ?>"><?php single_cat_title(); ?></h1>
   </div>
-  <div class="category-wrapper <?php if (!$categories) : echo 'container-l'; endif; ?>">
+  <div class="category-wrapper <?php if (!$categories) : echo 'container-l';
+                                endif; ?>">
     <?php if ($categories) : ?>
-      <ul class="filter-buttons">
-        <li class="under-category">
-          <span data-slug="all">
-            Все
-          </span>
-          <svg viewBox="0 0 496 496">
-            <g>
-              <path d="M488,240H256V8c0-4.418-3.582-8-8-8s-8,3.582-8,8v232H8c-4.418,0-8,3.582-8,8s3.582,8,8,8h232v232c0,4.418,3.582,8,8,8
-			s8-3.582,8-8V256h232c4.418,0,8-3.582,8-8S492.418,240,488,240z" />
-            </g>
-          </svg>
-        </li>
-          <?php foreach ($categories as $category) : ?>
+      <div class="stiky-wrapper">
+        <ul class="filter-buttons">
           <li class="under-category">
-            <span data-slug="<?= $category->slug?>">
-              <?= $category->name ?>
+            <span data-slug="all">
+              Все
             </span>
-            <svg viewBox="0 0 496 496">
-              <g>
-                <path d="M488,240H256V8c0-4.418-3.582-8-8-8s-8,3.582-8,8v232H8c-4.418,0-8,3.582-8,8s3.582,8,8,8h232v232c0,4.418,3.582,8,8,8
-			s8-3.582,8-8V256h232c4.418,0,8-3.582,8-8S492.418,240,488,240z" />
-              </g>
+            <svg viewBox="0 0 512 512">
+              <path d="M508.875,248.458l-160-160c-4.167-4.167-10.917-4.167-15.083,0c-4.167,4.167-4.167,10.917,0,15.083l141.792,141.792
+			H10.667C4.771,245.333,0,250.104,0,256s4.771,10.667,10.667,10.667h464.917L333.792,408.458c-4.167,4.167-4.167,10.917,0,15.083
+			c2.083,2.083,4.813,3.125,7.542,3.125c2.729,0,5.458-1.042,7.542-3.125l160-160C513.042,259.375,513.042,252.625,508.875,248.458z
+			" />
             </svg>
+
           </li>
-        <?php endforeach; ?>
-      </ul>
+          <?php foreach ($categories as $category) : ?>
+            <li class="under-category">
+              <span data-slug="<?= $category->slug ?>">
+                <?= $category->name ?>
+              </span>
+              <svg viewBox="0 0 512 512">
+                <path d="M508.875,248.458l-160-160c-4.167-4.167-10.917-4.167-15.083,0c-4.167,4.167-4.167,10.917,0,15.083l141.792,141.792
+			H10.667C4.771,245.333,0,250.104,0,256s4.771,10.667,10.667,10.667h464.917L333.792,408.458c-4.167,4.167-4.167,10.917,0,15.083
+			c2.083,2.083,4.813,3.125,7.542,3.125c2.729,0,5.458-1.042,7.542-3.125l160-160C513.042,259.375,513.042,252.625,508.875,248.458z
+			" />
+              </svg>
+
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
     <?php endif; ?>
-    <div class="category-items search-category <?php if ($categories) : echo 'container-r'; endif; ?>">
+    <div class="category-items search-category <?php if ($categories) : echo 'container-r';
+                                                endif; ?>">
       <?php include 'search-category.php' ?>
     </div>
   </div>
