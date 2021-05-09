@@ -236,16 +236,7 @@ if( function_exists('acf_add_options_page') ) {
 add_theme_support( 'editor-styles');
 
 function searchСategory() {
-  $all = $_POST['all'];
-  $all = trim($all);
-  $underCategory = $_POST['underCategory'];
-  $underCategory = trim($underCategory);
-
-  if ($underCategory === $all) {
-    $termCategory = $_POST['parent'];
-  } else {
-    $termCategory = $_POST['underCategory'];
-  }
+  $slug = $_POST['underCategory'];
 
   $args = array(
     'post_type' => 'products',
@@ -254,7 +245,7 @@ function searchСategory() {
       array(
         'taxonomy' => 'category',
         'field' => 'slug',
-        'terms' => $termCategory,
+        'terms' => $slug === 'all' ? $_POST['parent'] : $_POST['underCategory'],
       )
     ),
   );
