@@ -7,6 +7,9 @@
     ?>
     <?php if ($post) : ?>
       <?php
+      $size_product = get_field('size_product', $post->ID);
+      $size_profile = get_field('size_profile', $post->ID);
+      $label = get_field('label', $post->ID);
       $coatings = get_the_terms($post->ID, 'coatings');
       $hardware_price = get_field('hardware_price', $post->ID);
       $extra_charge = get_field('single_extra_charge', $post->ID);
@@ -31,6 +34,9 @@
       ?>
       <div class="single_product">
         <ul class="single_product__gallery">
+          <div>
+              <?= $label ?>
+          </div>
           <?php if ($images) : ?>
             <?php foreach ($images as $image) : ?>
               <li data-src="<?= $image['url'] ?>">
@@ -90,9 +96,9 @@
 
 
               if ($percent) {
-                $price_array[] = ((array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods) / $percent;
-                $percentPrice = ((array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods) / $percent;
-                $price_array[] = ((array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods) - $percentPrice;
+                $price = ((array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods);
+                $percentPrice = $price / 100 * $percent;
+                $price_array[] = $price - $percentPrice;
               } else {
                 $price_array[] = (array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods;
               }
@@ -110,11 +116,11 @@
           <div class="single_product_variations">
             <div class="product-size">
               <span>Размер(ДхШхВ)</span>
-              <span>1600х400х550</span>
+              <span><?= $size_product['length'] ?> х <?= $size_product['width'] ?> х <?= $size_product['height'] ?></span>
             </div>
             <div class="product_profile">
               <span>Профиль:</span>
-              <span>20x20</span>
+              <span><?= $size_profile['width'] ?> x <?= $size_profile['height'] ?></span>
             </div>
             <div class="product_cover">
               <span>Покрытие:</span>
