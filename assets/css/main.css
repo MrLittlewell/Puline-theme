@@ -250,7 +250,7 @@ a {
 }
 
 .flyout-menu {
-  position: absolute;
+  position: fixed;
   width: 50%;
   height: calc(100% - 5.5rem);
   bottom: 0;
