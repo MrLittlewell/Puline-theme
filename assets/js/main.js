@@ -4,6 +4,14 @@ $(document).ready(function() {
     mode: 'fade',
   }); 
 
+  $('select').niceSelect();
+
+  $('.variables-select-wrapper select').change(function() {
+    const findValue = $('.nice-select .option.selected').attr('idx');
+    $('.selected-price').hide();
+    $(`.selected-price[idx=${findValue}]`).show()
+  })
+
   $('.flyout-trigger').click(function() {
     $('#header').toggleClass('flyout-shown')
   });
@@ -39,7 +47,6 @@ $(document).ready(function() {
   })
 
 
-  let underCategory = 'test';
   let classUnderCategory = $('.under-category span');
 
   const handleCheckListItem = (parent) => {
@@ -47,14 +54,11 @@ $(document).ready(function() {
     parent.toggleClass('checked');
   }
 
-  classUnderCategory.click(function (e) {
+  classUnderCategory.click(function () {
+
     handleCheckListItem($(this))
     underCategory = $(this).text();
-  });
 
-
-
-  classUnderCategory.click(function () {
     return $.ajax({
       type: 'POST',
       url: ajax.ajaxurl,

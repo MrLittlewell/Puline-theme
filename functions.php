@@ -1,28 +1,23 @@
 <?php
 
-use function App\template;
-
 function puline_scripts_styles(){
-
-  // Регистрирую стили
   wp_register_style( 'swiper_css', get_template_directory_uri() . '/assets/css/swiper.css', array(), '1.0', 'screen');
   wp_register_style( 'lightgallery', get_template_directory_uri() . '/assets/css/lightGallery.css', array(), '1.0', 'screen');
+  wp_register_style( 'niceSelect', get_template_directory_uri() . '/assets/css/nice-select.css', array(), '1.0', 'screen');
   wp_register_style( 'my_style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.2', 'screen');
-
-  // Подключаю стили
+  
   wp_enqueue_style( 'swiper_css');
   wp_enqueue_style( 'lightgallery');
+  wp_enqueue_style( 'niceSelect');
   wp_enqueue_style( 'my_style');
 
-  // Подключаем файл с JS скриптом
   wp_enqueue_script( 'jquery_js', get_template_directory_uri() . '/assets/js/jquery.js', array(), '1.0', true);
-  wp_enqueue_script( 'swiper_js', get_template_directory_uri() . '/assets/js/swiper.js', array(), '1.0', true);
-  wp_enqueue_script( 'parallax', get_template_directory_uri() . '/assets/js/parallax.js', array(), '1.0', true);
-  wp_enqueue_script( 'lightGalleryJs', get_template_directory_uri() . '/assets/js/lightGallery.js', array(), '1.0', true);
+  wp_enqueue_script( 'plugins', get_template_directory_uri() . '/assets/js/plugins.js', array(), '1.0', true);
   wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true);
   wp_localize_script('main', 'ajax', [
     'ajaxurl' => admin_url('admin-ajax.php'),
   ]);
+  
 }
 
 add_action( 'wp_enqueue_scripts', 'puline_scripts_styles', 1 );
@@ -182,7 +177,7 @@ function custom_register_post_types() {
                 'item_published_privately' => ( $post_type["name"] . ' published privately.' ),
                 'item_reverted_to_draft'   => ( $post_type["name"] . ' reverted to draft.' ),
                 'item_scheduled'           => ( $post_type["name"] . ' scheduled.' ),
-                'item_updated'             => __( $post_type["name"] . ' updated.' ),
+                'item_updated'             => ( $post_type["name"] . ' updated.' ),
             ],
             'menu_icon'     => $post_type['menu_icon'],
             'public'        => true,
@@ -245,16 +240,11 @@ function searchСategory() {
   $underCategory = $_POST['underCategory'];
   $currentCategory = $_POST['parent'];
 
-
-
-
   if ($underCategory === $currentCategory) {
     $currentCategory = $_POST['parent'];
   } else {
     $currentCategory = $_POST['underCategory'];
   }
-
-
 
   $args = array(
     'post_type' => 'products',
@@ -268,7 +258,7 @@ function searchСategory() {
     ),
   );
 
-  $singleCategory = get_posts($args);
+  get_posts($args);
 
   echo include 'search-category.php';
 
