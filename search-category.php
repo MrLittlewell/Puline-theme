@@ -39,9 +39,9 @@
         $price_of_materials[] = $footageBody * $priceBody;
       }
       if ($percent) {
-        $percentPrice = ((array_sum($price_of_materials) + $hardware_price) * $markup_of_goods) / $percent;
-        $totalPrice = ((array_sum($price_of_materials) + $hardware_price) * $markup_of_goods) - $percentPrice;
-        $price[] = $totalPrice;
+        $totalPrice = ((array_sum($price_of_materials) + $hardware_price) * $markup_of_goods);
+        $percentPrice = $totalPrice / 100 * $percent;
+        $price[] = $totalPrice - $percentPrice;
       } else {
         $totalPrice = (array_sum($price_of_materials) + $hardware_price) * $markup_of_goods;
         $price[] = $totalPrice;

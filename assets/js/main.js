@@ -46,9 +46,7 @@ $(document).ready(function() {
     }
   })
 
-
   let classUnderCategory = $('.under-category span');
-
   const handleCheckListItem = (parent) => {
     parent.siblings('.checked').removeClass('checked')
     parent.toggleClass('checked');
@@ -66,6 +64,7 @@ $(document).ready(function() {
         action: 'searchСategory',
         underCategory: underCategory,
         parent: $('h1').text(),
+        all: $('.filter-buttons').find('li:first').text()
       },
       success: function (res) {
         $('.search-category').html(res);

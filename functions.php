@@ -5,7 +5,7 @@ function puline_scripts_styles(){
   wp_register_style( 'lightgallery', get_template_directory_uri() . '/assets/css/lightGallery.css', array(), '1.0', 'screen');
   wp_register_style( 'niceSelect', get_template_directory_uri() . '/assets/css/nice-select.css', array(), '1.0', 'screen');
   wp_register_style( 'my_style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.2', 'screen');
-  
+
   wp_enqueue_style( 'swiper_css');
   wp_enqueue_style( 'lightgallery');
   wp_enqueue_style( 'niceSelect');
@@ -17,7 +17,7 @@ function puline_scripts_styles(){
   wp_localize_script('main', 'ajax', [
     'ajaxurl' => admin_url('admin-ajax.php'),
   ]);
-  
+
 }
 
 add_action( 'wp_enqueue_scripts', 'puline_scripts_styles', 1 );
@@ -28,7 +28,7 @@ if (function_exists('add_theme_support')) {
 
 add_action( 'after_setup_theme', function(){
 
-  
+
 	register_nav_menus( [
 		'header_menu' => 'Меню в шапке',
 		'footer_menu' => 'Меню в подвале'
@@ -236,14 +236,15 @@ if( function_exists('acf_add_options_page') ) {
 add_theme_support( 'editor-styles');
 
 function searchСategory() {
-
+  $all = $_POST['all'];
+  $all = trim($all);
   $underCategory = $_POST['underCategory'];
-  $currentCategory = $_POST['parent'];
+  $underCategory = trim($underCategory);
 
-  if ($underCategory === $currentCategory) {
-    $currentCategory = $_POST['parent'];
+  if ($underCategory === $all) {
+    $termCategory = $_POST['parent'];
   } else {
-    $currentCategory = $_POST['underCategory'];
+    $termCategory = $_POST['underCategory'];
   }
 
   $args = array(
@@ -253,18 +254,15 @@ function searchСategory() {
       array(
         'taxonomy' => 'category',
         'field' => 'slug',
-        'terms' => $currentCategory,
+        'terms' => $termCategory,
       )
     ),
   );
 
-  get_posts($args);
-
+  $singleCategory = get_posts($args);
   echo include 'search-category.php';
-
   wp_die();
 }
-
 
 add_action( 'wp_ajax_searchСategory', 'searchСategory' );
 add_action( 'wp_ajax_nopriv_searchСategory', 'searchСategory' );
