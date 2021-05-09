@@ -38,6 +38,9 @@
 				<div class="logo-block">
 					P U L I N E
 				</div>
-				<?php wp_nav_menu(); ?>
+              <?php wp_nav_menu([
+                'menu' => 'header_and_footer_menu',
+                'theme_location' => 'header_and_footer_menu',
+              ]); ?>
 			</div>
 		</header>

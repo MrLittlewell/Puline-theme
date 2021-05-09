@@ -30,8 +30,7 @@ add_action( 'after_setup_theme', function(){
 
 
 	register_nav_menus( [
-		'header_menu' => 'Меню в шапке',
-		'footer_menu' => 'Меню в подвале'
+		'header_and_footer_menu' => 'Меню в шапке и подвале',
 	] );
 
   add_theme_support(
@@ -251,7 +250,9 @@ function searchСategory() {
   );
 
   $singleCategory = get_posts($args);
-  echo include 'search-category.php';
+
+  include 'search-category.php';
+
   wp_die();
 }
 
