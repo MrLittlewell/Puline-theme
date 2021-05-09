@@ -7,7 +7,6 @@
     ?>
     <?php if ($post) : ?>
       <?php
-      $color_scheme = get_field('color_scheme', $post->ID);
       $size_product = get_field('size_product', $post->ID);
       $size_profile = get_field('size_profile', $post->ID);
       $label = get_field('label', $post->ID);
@@ -115,28 +114,6 @@
           $price_of_materials = [];
           ?>
           <div class="single_product_variations">
-            <?php if ($color_scheme) : ?>
-              <div>
-                  <span>
-                      Цвета корпуса
-                  </span>
-                  <span>
-                    <?php foreach ($color_scheme['profile_color'] as $color) : ?>
-                      <span style="background-color: <?= $color['color']?>"></span>
-                    <?php endforeach;?>
-                  </span>
-              </div>
-
-              <div>
-                  <span>
-                      Цвета профиля
-                  </span>
-                <?php foreach ($color_scheme['body_color'] as $color) : ?>
-                    <span style="background-color: <?= $color['color']?>"></span>
-                <?php endforeach;?>
-
-              </div>
-            <?php endif?>
             <div class="product-size">
               <span>Размер(ДхШхВ)</span>
               <span><?= $size_product['length'] ?> х <?= $size_product['width'] ?> х <?= $size_product['height'] ?></span>
