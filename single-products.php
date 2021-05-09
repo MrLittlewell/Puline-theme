@@ -36,9 +36,9 @@
       <div class="single_product">
         <ul class="single_product__gallery">
           <?php if ($label !== 'Без метки') : ?>
-              <div>
-                <?= $label ?>
-              </div>
+            <div>
+              <?= $label ?>
+            </div>
           <?php endif; ?>
           <?php if ($images) : ?>
             <?php foreach ($images as $image) : ?>
@@ -191,14 +191,14 @@
           <div class="single_product_price">
             <span>Цена:</span>
             <?php foreach ($price_array as $price) : ?>
-              <div class="selected-price" idx="<?= $j++ ?>">
+              <div class="selected-price <?= $j == 1 ? 'current' : null ?>" idx="<?= $j++ ?>">
                 <?= round($price) ?> BYN
               </div>
             <?php endforeach; ?>
           </div>
-          <button class="product-order-button">
+          <a class="product-order-button" href="#do-order" data-modal>
             заказать
-          </button>
+          </a>
         </div>
       <?php endif ?>
       </div>
@@ -207,4 +207,48 @@
         <?= $description ?? '' ?>
       </div>
 </section>
+<div id="do-order" class="modal">
+  <div class="hidden-form"></div>
+  <h2>Оставьте Ваши данные для заказа</h2>
+  <p>С вами свяжется наш менеджер</p>
+  <table>
+  <tr>
+    <td>Название:</td>
+    <td class="table-name"></td>
+  </tr>
+  <tr>
+    <td>Размеры:</td>
+    <td class="table-size"></td>
+  </tr>
+  <tr>
+    <td>Артикул:</td>
+    <td class="table-article"></td>
+  </tr>
+  <tr>
+    <td>Комплектация:</td>
+    <td class="table-compl"></td>
+  </tr>
+  <tr>
+    <td>Цена:</td>
+    <td class="table-price"></td>
+  </tr>
+  </table>
+  <form action="">
+    <div class="field-wrapper">
+      <label for="">ФИО</label>
+      <input type="text" name="f-name" class="form-control" autocomplete="off">
+    </div>
+    <div class="field-wrapper">
+      <label for="">Email</label>
+      <input type="text" name="f-email" class="form-control" autocomplete="off">
+    </div>
+    <div class="field-wrapper">
+      <label for="">Телефон</label>
+      <input type="text" name="f-phone" class="form-control" autocomplete="off">
+    </div>
+    <button type="submit" class="set-form">
+      оформить заказ
+    </button>
+  </form>
+</div>
 <?php get_footer(); ?>

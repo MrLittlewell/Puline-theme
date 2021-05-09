@@ -5,11 +5,13 @@ function puline_scripts_styles()
   wp_register_style('swiper_css', get_template_directory_uri() . '/assets/css/swiper.css', array(), '1.0', 'screen');
   wp_register_style('lightgallery', get_template_directory_uri() . '/assets/css/lightGallery.css', array(), '1.0', 'screen');
   wp_register_style('niceSelect', get_template_directory_uri() . '/assets/css/nice-select.css', array(), '1.0', 'screen');
+  wp_register_style('modal', get_template_directory_uri() . '/assets/css/modal.css', array(), '1.0', 'screen');
   wp_register_style('my_style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.2', 'screen');
 
   wp_enqueue_style('swiper_css');
   wp_enqueue_style('lightgallery');
   wp_enqueue_style('niceSelect');
+  wp_enqueue_style('modal');
   wp_enqueue_style('my_style');
 
   wp_enqueue_script('jquery_js', get_template_directory_uri() . '/assets/js/jquery.js', array(), '1.0', true);

@@ -1,18 +1,38 @@
-$(document).ready(function() {
+$(document).ready(function () {
   $(".single_product__gallery").lightGallery({
     speed: 500,
     mode: 'fade',
-  }); 
+  });
+
+
+  $('.product-order-button').click(function () {
+    const prodName = $('.single_product_title').text();
+    const prodSize = $('.product-size span:nth-child(2)').text();
+    const prodArt = $('.product_article span:nth-child(2)').text();
+    const prodComp = $('.nice-select .current').text();
+    const prodPrice = $('.selected-price.current').text();
+
+    $('.table-name').html(prodName);
+    $('.table-size').html(prodSize);
+    $('.table-article').html(prodArt);
+    $('.table-compl').html(prodComp);
+    $('.table-price').html(prodPrice);
+    
+    $(this).modal({
+      fadeDuration: 400,
+    });
+  });
+
 
   $('select').niceSelect();
 
-  $('.variables-select-wrapper select').change(function() {
+  $('.variables-select-wrapper select').change(function () {
     const findValue = $('.nice-select .option.selected').attr('idx');
-    $('.selected-price').hide();
-    $(`.selected-price[idx=${findValue}]`).show()
+    $('.selected-price').hide().removeClass('current');
+    $(`.selected-price[idx=${findValue}]`).show().addClass('current')
   })
 
-  $('.flyout-trigger').click(function() {
+  $('.flyout-trigger').click(function () {
     $('#header').toggleClass('flyout-shown')
   });
 
@@ -31,10 +51,10 @@ $(document).ready(function() {
     },
   });
 
-  $('.favorite__icon').click(function() {
+  $('.favorite__icon').click(function () {
     const stuffId = this.dataset.id;
     const hasFavorites = localStorage.getItem('favorites');
-    if(hasFavorites !== null) {
+    if (hasFavorites !== null) {
       let arr = JSON.parse(hasFavorites)
       const combine = [...arr, stuffId];
       let uniqueItems = [...new Set(combine)];
@@ -65,7 +85,7 @@ $(document).ready(function() {
         underCategory: underCategory,
         parent: $('h1').attr('data-slug'),
       },
-      beforeSend: function() {
+      beforeSend: function () {
         $('.search-category').html(`
         <svg style="margin: auto; background: none; display: block; shape-rendering: auto;" width="104px" height="104px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
         <circle cx="50" cy="50" r="18" stroke-width="3" stroke="#53585a" stroke-dasharray="28.274333882308138 28.274333882308138" fill="none" stroke-linecap="round">
@@ -84,6 +104,29 @@ $(document).ready(function() {
     })
   });
 
+
+  function checkFormControl() {
+    $(".form-control").each(function () {
+      var thisa = $(this);
+      if (thisa.val().length) {
+        thisa.parents(".field-wrapper").addClass("focus");
+        thisa.parents(".field-wrapper").addClass("validate");
+      }
+    });
+  }
+  checkFormControl();
+  var $formField = $(".field-wrapper");
+  $formField.on("focus", ".form-control", function () {
+    $(this).parents(".field-wrapper").addClass("focus");
+    $(this).parents(".field-wrapper .form-control").addClass("validate");
+  });
+
+  $formField.on("focusout", ".form-control", function () {
+    if (!$(this).val().length) {
+      $(this).parents(".field-wrapper").removeClass("focus");
+    } else {
+    }
+  });
 });
 
 
