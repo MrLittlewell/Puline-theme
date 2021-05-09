@@ -7,6 +7,7 @@
     ?>
     <?php if ($post) : ?>
       <?php
+      $color_scheme = get_field('color_scheme', $post->ID);
       $size_product = get_field('size_product', $post->ID);
       $size_profile = get_field('size_profile', $post->ID);
       $label = get_field('label', $post->ID);
@@ -35,7 +36,7 @@
       <div class="single_product">
         <ul class="single_product__gallery">
           <div>
-              <?= $label ?>
+            <?= $label ?>
           </div>
           <?php if ($images) : ?>
             <?php foreach ($images as $image) : ?>
@@ -114,6 +115,10 @@
           $price_of_materials = [];
           ?>
           <div class="single_product_variations">
+            <div class="product_article">
+              <span>Артикул:</span>
+              <span><?= $article ?? '' ?></span>
+            </div>
             <div class="product-size">
               <span>Размер(ДхШхВ)</span>
               <span><?= $size_product['length'] ?> х <?= $size_product['width'] ?> х <?= $size_product['height'] ?></span>
@@ -125,26 +130,45 @@
             <div class="product_cover">
               <span>Покрытие:</span>
               <span>
-              <?php if ($coatings) : ?>
-                <?php $countСoatings = count($coatings) ?>
-                <?php foreach ($coatings as $coating) : ?>
-                  <?= $coating->name ?? ''; ?>
-                  <?php
-                  if ($countСoatings > 1) echo ',';
-                  $countСoatings--;
-                  ?>
-                <?php endforeach ?>
-              <?php endif ?>
+                <?php if ($coatings) : ?>
+                  <?php $countСoatings = count($coatings) ?>
+                  <?php foreach ($coatings as $coating) : ?>
+                    <?= $coating->name ?? ''; ?>
+                    <?php
+                    if ($countСoatings > 1) echo ',';
+                    $countСoatings--;
+                    ?>
+                  <?php endforeach ?>
+                <?php endif ?>
               </span>
             </div>
-            <div class="product_article">
-              <span>Артикул:</span>
-              <span><?= $article ?? '' ?></span>
-            </div>
+            <?php if ($color_scheme) : ?>
+              <div class="body_color">
+                <span>
+                  Цвета корпуса
+                </span>
+                <span class="item_colors">
+                  <?php foreach ($color_scheme['profile_color'] as $color) : ?>
+                    <span class="color-variable" style="background-color: <?= $color['color'] ?>"></span>
+                  <?php endforeach; ?>
+                </span>
+              </div>
+
+              <div class="profile_color">
+                <span>
+                  Цвета профиля
+                </span>
+                <span class="item_colors">
+                  <?php foreach ($color_scheme['body_color'] as $color) : ?>
+                    <span class="color-variable" style="background-color: <?= $color['color'] ?>"></span>
+                  <?php endforeach; ?>
+                </span>
+              </div>
+            <?php endif ?>
           </div>
           <div class="variables-select-wrapper">
-              Профиль/Корпус:
-              <?php if ($variation_arrays_name_materials) : ?>
+            Профиль/Корпус:
+            <?php if ($variation_arrays_name_materials) : ?>
               <select>
                 <?php foreach ($variation_arrays_name_materials as $variation_array_name_materials) : ?>
                   <?php $countMaterials = count($variation_array_name_materials) ?>
@@ -158,25 +182,25 @@
                     <?php endforeach; ?>
                   </option>
                 <?php endforeach; ?>
-                </select>
-              
-              <?php endif; ?>
-            </div>
-          <div class="single_product_price"> 
+              </select>
+
+            <?php endif; ?>
+          </div>
+          <div class="single_product_price">
             <span>Цена:</span>
             <?php foreach ($price_array as $price) : ?>
               <div class="selected-price" idx="<?= $j++ ?>">
                 <?= round($price) ?> BYN
               </div>
-            <?php endforeach; ?>                  
+            <?php endforeach; ?>
           </div>
           <button class="product-order-button">
             заказать
           </button>
         </div>
-    <?php endif ?>
-  </div>
-  <div class="single_product_description">
+      <?php endif ?>
+      </div>
+      <div class="single_product_description">
         <h3>Описание</h3>
         <?= $description ?? '' ?>
       </div>

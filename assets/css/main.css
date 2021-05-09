@@ -727,10 +727,28 @@ footer {
   transition: all .3s ease-in-out;
   cursor: pointer;
 }
+
 .product-order-button:hover {
   background-color: #1f1f1f;
   color: #fff;
 }
+
+.body_color .color-variable,
+.profile_color .color-variable {
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  border: 1px solid #000;
+  position: relative;
+}
+
+.item_colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
 /* @media (min-width: 48em) {
   .general_info_headline {
     margin: 1.875rem auto 0;
