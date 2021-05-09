@@ -35,9 +35,11 @@
       ?>
       <div class="single_product">
         <ul class="single_product__gallery">
-          <div>
-            <?= $label ?>
-          </div>
+          <?php if ($label !== 'Без метки') : ?>
+              <div>
+                <?= $label ?>
+              </div>
+          <?php endif; ?>
           <?php if ($images) : ?>
             <?php foreach ($images as $image) : ?>
               <li data-src="<?= $image['url'] ?>">
