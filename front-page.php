@@ -37,8 +37,8 @@ $slider = get_field('main-slider', 8);
           <h2><?= $block_info['left_block']['left_headline'] ?></h2>
           <p><?= $block_info['left_block']['left_description'] ?></p>
           <?php if ($block_info['left_block']['left_link']) { ?>
-            <a href="<?= $block_info['left_block']['left_link']['url'] ?>">
-              <?= $block_info['left_block']['left_link']['title'] ?>
+            <a class="link" href="<?= $block_info['left_block']['left_link']['url'] ?>">
+            - подробнее
             </a>
           <?php } ?>
         </div>
@@ -51,8 +51,8 @@ $slider = get_field('main-slider', 8);
           <h2><?= $block_info['right_block']['right_headline'] ?></h2>
           <p><?= $block_info['right_block']['right_description'] ?></p>
           <?php if ($block_info['right_block']['right_link']) { ?>
-            <a href="<?= $block_info['right_block']['right_link']['url'] ?>">
-              <?= $block_info['right_block']['right_link']['title'] ?>
+            <a class="link" href="<?= $block_info['right_block']['right_link']['url'] ?>">
+              - подробнее
             </a>
             <?php } ?>
         </div>
@@ -60,7 +60,7 @@ $slider = get_field('main-slider', 8);
     </div>
   </section>
 
-  <section>
+  <section class="main-info-content">
     <div class="container-l">
       <div class="general_info">
         <?php
