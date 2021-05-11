@@ -110,6 +110,28 @@
             "max": ""
         },
         {
+            "key": "field_609a767b2d811",
+            "label": "Рекомендуемые товары",
+            "name": "recommended_products",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "products"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_608eaa70f6cbc",
             "label": "Блок информации",
             "name": "block_info",
@@ -408,5 +430,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1619974750
+    "modified": 1620735722
 }

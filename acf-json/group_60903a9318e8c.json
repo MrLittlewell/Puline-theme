@@ -11,7 +11,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
@@ -30,15 +30,15 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": 0,
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "min": "",
+            "min": 0,
             "max": "",
             "step": ""
         },
@@ -51,15 +51,15 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": 0,
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "min": "",
+            "min": 0,
             "max": "",
             "step": ""
         },
@@ -72,23 +72,44 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": 0,
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "min": "",
+            "min": 0,
             "max": "",
             "step": ""
         },
         {
-            "key": "field_60979af8f32d5",
+            "key": "field_609aa14431d46",
+            "label": "Розничная наценка",
+            "name": "retail_margin",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_609aa77abf4ea",
             "label": "Размеры товара",
-            "name": "size_product",
-            "type": "group",
+            "name": "size_products",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -97,7 +118,11 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
             "sub_fields": [
                 {
                     "key": "field_609799504903f",
@@ -112,11 +137,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
+                    "default_value": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "min": "",
+                    "min": 0,
                     "max": "",
                     "step": ""
                 },
@@ -133,11 +158,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
+                    "default_value": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "min": "",
+                    "min": 0,
                     "max": "",
                     "step": ""
                 },
@@ -154,21 +179,21 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
+                    "default_value": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "min": "",
+                    "min": 0,
                     "max": "",
                     "step": ""
                 }
             ]
         },
         {
-            "key": "field_60979b20f32d6",
-            "label": "Размеры профиля",
-            "name": "size_profile",
-            "type": "group",
+            "key": "field_609a8f737a222",
+            "label": "Профиль",
+            "name": "profiles",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -177,45 +202,124 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_60979b804e46d",
-                    "label": "Ширина",
-                    "name": "width",
-                    "type": "text",
+                    "key": "field_609a8f987a223",
+                    "label": "Названия профиля",
+                    "name": "name_profile",
+                    "type": "select",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
+                    "choices": {
+                        "Профиль": "Профиль",
+                        "Прут": "Прут",
+                        "Полоса": "Полоса"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_60979b804e46d",
+                    "label": "Ширина",
+                    "name": "width",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_609a8f987a223",
+                                "operator": "!=",
+                                "value": "Прут"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "min": 0,
+                    "max": "",
+                    "step": ""
                 },
                 {
                     "key": "field_60979b9d4e46e",
                     "label": "Высота",
                     "name": "height",
-                    "type": "text",
+                    "type": "number",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_609a8f987a223",
+                                "operator": "!=",
+                                "value": "Прут"
+                            }
+                        ]
+                    ],
                     "wrapper": {
-                        "width": "50",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
+                    "default_value": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "min": 0,
+                    "max": "",
+                    "step": ""
+                },
+                {
+                    "key": "field_609a90bf159e1",
+                    "label": "Диаметр",
+                    "name": "diameter",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_609a8f987a223",
+                                "operator": "==contains",
+                                "value": "Прут"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": 0,
+                    "max": "",
+                    "step": ""
                 }
             ]
         },
@@ -399,5 +503,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1620576517
+    "modified": 1620748313
 }
