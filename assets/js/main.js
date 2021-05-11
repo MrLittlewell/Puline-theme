@@ -51,6 +51,16 @@ $(document).ready(function () {
     },
   });
 
+  new Swiper(".recommended", {
+    slidesPerView: "3",
+    speed: 800,
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
   $('.favorite__icon').click(function () {
     const stuffId = this.dataset.id;
     const hasFavorites = localStorage.getItem('favorites');

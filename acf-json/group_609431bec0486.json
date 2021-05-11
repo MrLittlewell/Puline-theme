@@ -75,11 +75,11 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
+                            "default_value": 0,
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "min": "",
+                            "min": 0,
                             "max": "",
                             "step": ""
                         },
@@ -96,11 +96,11 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
+                            "default_value": 0,
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "min": "",
+                            "min": 0,
                             "max": "",
                             "step": ""
                         }
@@ -160,11 +160,11 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
+                            "default_value": 0,
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "min": "",
+                            "min": 0,
                             "max": "",
                             "step": ""
                         }
@@ -190,5 +190,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1620465714
+    "modified": 1620747363
 }
