@@ -36,7 +36,17 @@
 
 			<div class="header__top">
 				<div class="logo-block">
-					P U L I N E
+					<a href="/">
+					<?php 
+						$custom_logo_id = get_theme_mod( 'custom_logo' );
+						$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+						 
+						if ( has_custom_logo() ) {
+								echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '">';
+						}
+					?>
+					 PULINE  DESIGN
+					</a>
 				</div>
 				<?php wp_nav_menu([
 					'menu' => 'header_and_footer_menu',

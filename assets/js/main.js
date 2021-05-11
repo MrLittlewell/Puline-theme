@@ -37,9 +37,11 @@ $(document).ready(function () {
   });
 
   const swiper = new Swiper(".front-slider", {
-    slidesPerView: "auto",
+    slidesPerView: 1,
     speed: 800,
-    effect: 'coverflow',
+    effect: 'slide',
+    centeredSlides: true,
+    cssMode: true,
     spaceBetween: 10,
     navigation: {
       nextEl: ".swiper-button-next",
@@ -49,6 +51,19 @@ $(document).ready(function () {
       el: ".swiper-pagination",
       clickable: true,
     },
+    breakpoints: {
+      550: {
+
+      },
+      890: {
+
+      },
+      1100: {
+        slidesPerView: "auto",
+        speed: 800,
+
+      }
+    }
   });
 
   $('.favorite__icon').click(function () {

@@ -10,7 +10,6 @@
       $color_scheme = get_field('color_scheme', $post->ID);
       $size_product = get_field('size_product', $post->ID);
       $size_profile = get_field('size_profile', $post->ID);
-      $label = get_field('label', $post->ID);
       $coatings = get_the_terms($post->ID, 'coatings');
       $hardware_price = get_field('hardware_price', $post->ID);
       $extra_charge = get_field('single_extra_charge', $post->ID);
@@ -35,11 +34,7 @@
       ?>
       <div class="single_product">
         <ul class="single_product__gallery">
-          <?php if ($label !== 'Без метки') : ?>
-            <div>
-              <?= $label ?>
-            </div>
-          <?php endif; ?>
+
           <?php if ($images) : ?>
             <?php foreach ($images as $image) : ?>
               <li data-src="<?= $image['url'] ?>">
