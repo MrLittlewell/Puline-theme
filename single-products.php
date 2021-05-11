@@ -7,7 +7,6 @@
     ?>
     <?php if ($post) : ?>
       <?php
-      $retail_margin = get_field('retail_margin');
       $color_scheme = get_field('color_scheme', $post->ID);
       $size_products = get_field('size_products', $post->ID);
       $profiles = get_field('profiles', $post->ID);
@@ -69,6 +68,7 @@
           $price_array = [];
           if ($product_variations) {
             foreach ($product_variations as $variation) {
+              $retail_margin = $variation['retail_margin'];
               $variation_name_materials = [];
               $price_of_materials = [];
               if ($variation['select_profile_materials']) {
@@ -88,6 +88,8 @@
                   $price_of_materials[] = $footageBody * $priceBody;
                 }
               }
+              $retail_array_margin[] = $retail_margin;
+              $retail_margin_counter = 0;
               $price_arrays_name_materials[] = $price_of_materials;
               $variation_arrays_name_materials[] = $variation_name_materials;
             }
@@ -95,9 +97,9 @@
               if ($percent) {
                 $price = ((array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods);
                 $percentPrice = $price / 100 * $percent;
-                $price_array[] = ($price - $percentPrice) + $retail_margin;
+                $price_array[] = ($price - $percentPrice) + $retail_array_margin[$retail_margin_counter++];
               } else {
-                $price_array[] = ((array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods) + $retail_margin;
+                $price_array[] = ((array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods) + $retail_array_margin[$retail_margin_counter++];
               }
             }
           }
@@ -218,7 +220,7 @@
             <span>Цена:</span>
             <?php foreach ($price_array as $price) : ?>
               <div class="selected-price <?= $j == 1 ? 'current' : null ?>" idx="<?= $j++ ?>">
-                <?= round($price) ?> BYN
+                <?= ceil($price) ?> BYN
               </div>
             <?php endforeach; ?>
           </div>
