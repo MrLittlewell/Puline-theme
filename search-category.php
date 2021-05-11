@@ -29,6 +29,7 @@
 
   if ($product_variations) {
     foreach ($product_variations as $variation) {
+      $retail_margin = $variation['retail_margin'];
       $price_of_materials = [];
       foreach ($variation['select_profile_materials'] as $profile) {
         $coefficient = $profile['coefficient'];
@@ -41,12 +42,14 @@
         $priceBody = get_field('price', $body['material']->ID);
         $price_of_materials[] = $footageBody * $priceBody;
       }
+      $retail_array_margin[] = $retail_margin;
+      $retail_margin_counter = 0;
       if ($percent) {
         $totalPrice = ((array_sum($price_of_materials) + $hardware_price) * $markup_of_goods);
         $percentPrice = $totalPrice / 100 * $percent;
-        $price[] = ($totalPrice - $percentPrice) + $retail_margin;
+        $price[] = ($totalPrice - $percentPrice) + $retail_array_margin[$retail_margin_counter++];
       } else {
-        $totalPrice = ((array_sum($price_of_materials) + $hardware_price) * $markup_of_goods) + $retail_margin;
+        $totalPrice = ((array_sum($price_of_materials) + $hardware_price) * $markup_of_goods) + $retail_array_margin[$retail_margin_counter++];
         $price[] = $totalPrice;
       }
     }
@@ -89,7 +92,7 @@
       <div class="article"><?= $article ?? '' ?></div>
       <div class="price">
         <span class="price-name">Цена от:</span>
-        <?= round(array_shift($price)) ?> BYN
+        <?= ceil(array_shift($price)) ?> BYN
       </div>
     </div>
   </div>

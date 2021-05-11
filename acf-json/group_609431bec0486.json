@@ -22,6 +22,27 @@
             "button_label": "",
             "sub_fields": [
                 {
+                    "key": "field_609ab86cfa2c6",
+                    "label": "Розничная наценка",
+                    "name": "retail_margin",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "51",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": 0,
+                    "max": "",
+                    "step": ""
+                },
+                {
                     "key": "field_609446ebabf12",
                     "label": "Выберите материалы для профиля",
                     "name": "select_profile_materials",
@@ -190,5 +211,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1620751112
+    "modified": 1620752968
 }
