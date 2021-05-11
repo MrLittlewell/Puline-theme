@@ -39,9 +39,6 @@ $(document).ready(function () {
   const swiper = new Swiper(".front-slider", {
     slidesPerView: 1,
     speed: 800,
-    effect: 'slide',
-    centeredSlides: true,
-    cssMode: true,
     spaceBetween: 10,
     navigation: {
       nextEl: ".swiper-button-next",
@@ -53,15 +50,13 @@ $(document).ready(function () {
     },
     breakpoints: {
       550: {
-
+      
       },
       890: {
 
       },
       1100: {
-        slidesPerView: "auto",
-        speed: 800,
-
+        slidesPerView: 'auto',
       }
     }
   });
