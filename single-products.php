@@ -7,6 +7,7 @@
     ?>
     <?php if ($post) : ?>
       <?php
+      $retail_margin = get_field('retail_margin');
       $color_scheme = get_field('color_scheme', $post->ID);
       $size_product = get_field('size_product', $post->ID);
       $size_profile = get_field('size_profile', $post->ID);
@@ -91,14 +92,12 @@
               $variation_arrays_name_materials[] = $variation_name_materials;
             }
             foreach ($price_arrays_name_materials as $price_array_name_materials) {
-
-
               if ($percent) {
                 $price = ((array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods);
                 $percentPrice = $price / 100 * $percent;
-                $price_array[] = $price - $percentPrice;
+                $price_array[] = ($price - $percentPrice) + $retail_margin;
               } else {
-                $price_array[] = (array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods;
+                $price_array[] = ((array_sum($price_array_name_materials) + $hardware_price) * $markup_of_goods) + $retail_margin;
               }
             }
           }
@@ -118,11 +117,43 @@
             </div>
             <div class="product-size">
               <span>Размер(ДхШхВ)</span>
-              <span><?= $size_product['length'] ?> х <?= $size_product['width'] ?> х <?= $size_product['height'] ?></span>
+              <?php if ($size_products) : ?>
+                <?php $countSizeProducts = count($size_products) ?>
+                  <span>
+                      <?php foreach ($size_products as $size_product) : ?>
+                        <?php if ($size_product['length'] === $size_product['width']) : ?>
+                          <?= $size_product['width'] ?> х <?= $size_product['height'] ?>
+                        <?php else : ?>
+                          <?= $size_product['length'] ?> х <?= $size_product['width'] ?> х <?= $size_product['height'] ?>
+                        <?php endif; ?>
+                        <?php
+                        if ($countSizeProducts > 1) echo ' и ';
+                        $countSizeProducts--;
+                        ?>
+                      <?php endforeach ?>
+                  </span>
+              <?php endif; ?>
             </div>
             <div class="product_profile">
               <span>Профиль:</span>
-              <span><?= $size_profile['width'] ?> x <?= $size_profile['height'] ?></span>
+              <?php if ($profiles) : ?>
+                  <span>
+                    <?php $countProfile = count($profiles) ?>
+                    <?php foreach ($profiles as $profile) : ?>
+                      <?php if ($profile['name_profile'] === 'Профиль') : ?>
+                        <?= $profile['width'] ?> х <?= $profile['height'] ?>
+                      <?php elseif ($profile['name_profile'] === 'Прут') : ?>
+                        <?= $profile['name_profile'] ?>: Ф<?= $profile['diameter'] ?>
+                      <?php elseif ($profile['name_profile'] === 'Полоса') : ?>
+                        <?= $profile['name_profile'] ?>: <?= $profile['width'] ?> х <?= $profile['height'] ?>
+                      <?php endif ?>
+                      <?php
+                      if ($countProfile > 1) echo ',';
+                      $countProfile--;
+                      ?>
+                    <?php endforeach; ?>
+                  </span>
+              <?php endif; ?>
             </div>
             <div class="product_cover">
               <span>Покрытие:</span>

@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <?php
 $slider = get_field('main-slider', 8);
+$singleCategory = get_field('recommended_products', 8);
 ?>
 <main>
   <section>
@@ -25,6 +26,17 @@ $slider = get_field('main-slider', 8);
       <div class="swiper-button-prev"></div>
     </div>
   </section>
+
+    <section>
+        <div class="swiper-container recommended">
+            <div class="swiper-wrapper">
+        <?php include 'search-category.php'?>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+      </div>
+
+    </section>
 
   <section class="main-feature">
     <div class="main-feature-container">
