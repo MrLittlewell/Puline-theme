@@ -11,7 +11,6 @@
       $color_scheme = get_field('color_scheme', $post->ID);
       $size_products = get_field('size_products', $post->ID);
       $profiles = get_field('profiles', $post->ID);
-      $label = get_field('label', $post->ID);
       $coatings = get_the_terms($post->ID, 'coatings');
       $hardware_price = get_field('hardware_price', $post->ID);
       $extra_charge = get_field('single_extra_charge', $post->ID);
@@ -36,11 +35,7 @@
       ?>
       <div class="single_product">
         <ul class="single_product__gallery">
-          <?php if ($label !== 'Без метки') : ?>
-            <div>
-              <?= $label ?>
-            </div>
-          <?php endif; ?>
+
           <?php if ($images) : ?>
             <?php foreach ($images as $image) : ?>
               <li data-src="<?= $image['url'] ?>">
@@ -124,40 +119,40 @@
               <span>Размер(ДхШхВ)</span>
               <?php if ($size_products) : ?>
                 <?php $countSizeProducts = count($size_products) ?>
-                  <span>
-                      <?php foreach ($size_products as $size_product) : ?>
-                        <?php if ($size_product['length'] === $size_product['width']) : ?>
-                          <?= $size_product['width'] ?> х <?= $size_product['height'] ?>
-                        <?php else : ?>
-                          <?= $size_product['length'] ?> х <?= $size_product['width'] ?> х <?= $size_product['height'] ?>
-                        <?php endif; ?>
-                        <?php
-                        if ($countSizeProducts > 1) echo ' и ';
-                        $countSizeProducts--;
-                        ?>
-                      <?php endforeach ?>
-                  </span>
+                <span>
+                  <?php foreach ($size_products as $size_product) : ?>
+                    <?php if ($size_product['length'] === $size_product['width']) : ?>
+                      <?= $size_product['width'] ?> х <?= $size_product['height'] ?>
+                    <?php else : ?>
+                      <?= $size_product['length'] ?> х <?= $size_product['width'] ?> х <?= $size_product['height'] ?>
+                    <?php endif; ?>
+                    <?php
+                    if ($countSizeProducts > 1) echo ' и ';
+                    $countSizeProducts--;
+                    ?>
+                  <?php endforeach ?>
+                </span>
               <?php endif; ?>
             </div>
             <div class="product_profile">
               <span>Профиль:</span>
               <?php if ($profiles) : ?>
-                  <span>
-                    <?php $countProfile = count($profiles) ?>
-                    <?php foreach ($profiles as $profile) : ?>
-                      <?php if ($profile['name_profile'] === 'Профиль') : ?>
-                        <?= $profile['width'] ?> х <?= $profile['height'] ?>
-                      <?php elseif ($profile['name_profile'] === 'Прут') : ?>
-                        <?= $profile['name_profile'] ?>: Ф<?= $profile['diameter'] ?>
-                      <?php elseif ($profile['name_profile'] === 'Полоса') : ?>
-                        <?= $profile['name_profile'] ?>: <?= $profile['width'] ?> х <?= $profile['height'] ?>
-                      <?php endif ?>
-                      <?php
-                      if ($countProfile > 1) echo ',';
-                      $countProfile--;
-                      ?>
-                    <?php endforeach; ?>
-                  </span>
+                <span>
+                  <?php $countProfile = count($profiles) ?>
+                  <?php foreach ($profiles as $profile) : ?>
+                    <?php if ($profile['name_profile'] === 'Профиль') : ?>
+                      <?= $profile['width'] ?> х <?= $profile['height'] ?>
+                    <?php elseif ($profile['name_profile'] === 'Прут') : ?>
+                      <?= $profile['name_profile'] ?>: Ф<?= $profile['diameter'] ?>
+                    <?php elseif ($profile['name_profile'] === 'Полоса') : ?>
+                      <?= $profile['name_profile'] ?>: <?= $profile['width'] ?> х <?= $profile['height'] ?>
+                    <?php endif ?>
+                    <?php
+                    if ($countProfile > 1) echo ',';
+                    $countProfile--;
+                    ?>
+                  <?php endforeach; ?>
+                </span>
               <?php endif; ?>
             </div>
             <div class="product_cover">
@@ -243,26 +238,26 @@
   <h2>Оставьте Ваши данные для заказа</h2>
   <p>С вами свяжется наш менеджер</p>
   <table>
-  <tr>
-    <td>Название:</td>
-    <td class="table-name"></td>
-  </tr>
-  <tr>
-    <td>Размеры:</td>
-    <td class="table-size"></td>
-  </tr>
-  <tr>
-    <td>Артикул:</td>
-    <td class="table-article"></td>
-  </tr>
-  <tr>
-    <td>Комплектация:</td>
-    <td class="table-compl"></td>
-  </tr>
-  <tr>
-    <td>Цена:</td>
-    <td class="table-price"></td>
-  </tr>
+    <tr>
+      <td>Название:</td>
+      <td class="table-name"></td>
+    </tr>
+    <tr>
+      <td>Размеры:</td>
+      <td class="table-size"></td>
+    </tr>
+    <tr>
+      <td>Артикул:</td>
+      <td class="table-article"></td>
+    </tr>
+    <tr>
+      <td>Комплектация:</td>
+      <td class="table-compl"></td>
+    </tr>
+    <tr>
+      <td>Цена:</td>
+      <td class="table-price"></td>
+    </tr>
   </table>
   <form action="">
     <div class="field-wrapper">
