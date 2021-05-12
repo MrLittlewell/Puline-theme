@@ -251,7 +251,9 @@ footer .menu ul {
 }
 
 .front-slider .swiper-button-prev:after,
-.front-slider .swiper-button-next:after {
+.front-slider .swiper-button-next:after,
+.recommended-container .swiper-button-prev:after,
+.recommended-container .swiper-button-next:after {
   color: #888;
   font-size: 25px;
 }
@@ -689,10 +691,13 @@ footer {
 
 .nice-select {
   width: 100%;
+}
+.nice-select .current {
   text-overflow: ellipsis;
   overflow: hidden;
-}
+  display: block;
 
+}
 .under-category.active {
   background-color: #000000bb;
   color: #fff;
@@ -1006,7 +1011,10 @@ a.link:hover::before {
   color: #f03226;
   border-color: #f03226;
 }
-
+.recommended-container {
+  padding: 0 60px;
+  position: relative;
+}
 @media (max-width: 1500px) {
   .main-feature-container .right-block .info-content {
     width: calc((100% / 3) * 2.9);

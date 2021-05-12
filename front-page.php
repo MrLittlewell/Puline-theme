@@ -27,16 +27,16 @@ $singleCategory = get_field('recommended_products', 8);
     </div>
   </section>
 
-    <section>
-        <div class="swiper-container recommended">
-            <div class="swiper-wrapper">
-        <?php include 'search-category.php'?>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+  <section class="container-l recommended-container ">
+    <h2>Рекомендуемые</h2>
+    <div class="swiper-container recommended">
+      <div class="swiper-wrapper">
+        <?php include 'search-category.php' ?>
       </div>
-
-    </section>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </section>
 
   <section class="main-feature">
     <div class="main-feature-container">
@@ -50,7 +50,7 @@ $singleCategory = get_field('recommended_products', 8);
           <p><?= $block_info['left_block']['left_description'] ?></p>
           <?php if ($block_info['left_block']['left_link']) { ?>
             <a class="link" href="<?= $block_info['left_block']['left_link']['url'] ?>">
-            - подробнее
+              - подробнее
             </a>
           <?php } ?>
         </div>
@@ -66,7 +66,7 @@ $singleCategory = get_field('recommended_products', 8);
             <a class="link" href="<?= $block_info['right_block']['right_link']['url'] ?>">
               - подробнее
             </a>
-            <?php } ?>
+          <?php } ?>
         </div>
       </div>
     </div>

@@ -63,11 +63,12 @@ $(document).ready(function () {
 
   new Swiper(".recommended", {
     slidesPerView: "3",
+    loop: true,
     speed: 800,
     spaceBetween: 10,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: ".recommended-container .swiper-button-next",
+      prevEl: ".recommended-container .swiper-button-prev",
     },
   });
 
