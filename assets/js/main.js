@@ -1,4 +1,14 @@
 $(document).ready(function () {
+
+  wow = new WOW({
+    boxClass: 'animate__animated', // default
+    animateClass: 'animate__animated', // default
+    offset: 0, // default
+    mobile: true, // default
+    live: true // default
+  })
+  wow.init();
+  
   $(".single_product__gallery").lightGallery({
     speed: 500,
     mode: 'fade',
@@ -62,14 +72,24 @@ $(document).ready(function () {
   });
 
   new Swiper(".recommended", {
-    slidesPerView: "3",
+    slidesPerView: "1",
     loop: true,
     speed: 800,
     spaceBetween: 10,
     navigation: {
       nextEl: ".recommended-container .swiper-button-next",
       prevEl: ".recommended-container .swiper-button-prev",
-    },
+    },    breakpoints: {
+      700: {
+        slidesPerView: '1',
+      },
+      890: {
+        slidesPerView: '2',
+      },
+      1100: {
+        slidesPerView: '3',
+      }
+    }
   });
 
   $('.favorite__icon').click(function () {

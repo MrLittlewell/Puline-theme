@@ -16,6 +16,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<?php wp_head(); ?>
 </head>
+<?php
+$address = get_field('address', 'option');
+$email = get_field('email', 'option');
+$phone = get_field('phone', 'option');
+$social_networks = get_field('social_networks', 'option');
+?>
 
 <body>
 	<div id="main-wrapper">
@@ -26,8 +32,20 @@
 				<span class="flyout-trigger__bar"></span>
 			</div>
 			<div class="flyout-menu">
-				<div>
+				<div class="basic-menu">
+				<?php wp_nav_menu([
+					'menu' => 'header_and_footer_menu',
+					'theme_location' => 'header_and_footer_menu',
+				]); ?>
+				</div>
+				<div class="category-menu">
+					<h3>Категории</h3>
 					<?= build_custom_category_tree($catIdOfPost, $rootIdOfCat) ?>
+				</div>
+				<div class="contact_infos">
+					<p> <?= $address ?> </p>
+					<a class="link" href="mailto:<?= $email ?>"><?= $email ?></a>
+					<a class="link" href="tel:<?= $phone ?>"> <?= $phone ?> </a>
 				</div>
 			</div>
 			<div class="side-bar">
@@ -37,15 +55,15 @@
 			<div class="header__top">
 				<div class="logo-block">
 					<a href="/">
-					<?php 
-						$custom_logo_id = get_theme_mod( 'custom_logo' );
-						$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-						 
-						if ( has_custom_logo() ) {
-								echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '">';
+						<?php
+						$custom_logo_id = get_theme_mod('custom_logo');
+						$logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+
+						if (has_custom_logo()) {
+							echo '<img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '">';
 						}
-					?>
-					 PULINE  DESIGN
+						?>
+						PULINE DESIGN
 					</a>
 				</div>
 				<?php wp_nav_menu([

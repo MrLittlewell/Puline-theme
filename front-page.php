@@ -27,7 +27,7 @@ $singleCategory = get_field('recommended_products', 8);
     </div>
   </section>
 
-  <section class="container-l recommended-container ">
+  <section class="container-l recommended-container animate__animated animate__fadeIn" data-wow-offset="150">
     <h2>Рекомендуемые</h2>
     <div class="swiper-container recommended">
       <div class="swiper-wrapper">
@@ -43,9 +43,9 @@ $singleCategory = get_field('recommended_products', 8);
       <?php $block_info = get_field('block_info', 8); ?>
       <div class="left-block">
         <div class="img-wrapper">
-          <img src="<?= $block_info['left_block']['left_image']['url']; ?>" alt="">
+          <img class="start_hidden animate__animated animate__fadeInLeftBig" src="<?= $block_info['left_block']['left_image']['url']; ?>" alt="" data-wow-offset="150">
         </div>
-        <div class="info-content">
+        <div class="info-content animate__animated animate__fadeInLeftBig" data-wow-offset="">
           <h2><?= $block_info['left_block']['left_headline'] ?></h2>
           <p><?= $block_info['left_block']['left_description'] ?></p>
           <?php if ($block_info['left_block']['left_link']) { ?>
@@ -57,9 +57,9 @@ $singleCategory = get_field('recommended_products', 8);
       </div>
       <div class="right-block">
         <div class="img-wrapper">
-          <img src="<?= $block_info['right_block']['right_image']['url']; ?>" alt="">
+          <img class="start_hidden animate__animated animate__fadeInRightBig" src="<?= $block_info['right_block']['right_image']['url']; ?>" alt="" data-wow-offset="150">
         </div>
-        <div class="info-content">
+        <div class="info-content animate__animated animate__fadeInRightBig" data-wow-offset="0">
           <h2><?= $block_info['right_block']['right_headline'] ?></h2>
           <p><?= $block_info['right_block']['right_description'] ?></p>
           <?php if ($block_info['right_block']['right_link']) { ?>
@@ -78,11 +78,16 @@ $singleCategory = get_field('recommended_products', 8);
         <?php
         $general_info = get_field('general_info', 8);
         ?>
-        <div class="general_info_subheadline"><?= $general_info['subheadline'] ?></div>
-        <div class="general_info_headline"><?= $general_info['headline'] ?></div>
-        <div class="general_info_description"><?= $general_info['description'] ?></div>
+        <div class="general_info_subheadline animate__animated animate__fadeInLeftBig" data-wow-offset="0"><?= $general_info['subheadline'] ?></div>
+        <div class="general_info_headline animate__animated animate__fadeInRightBig" data-wow-offset="0"><?= $general_info['headline'] ?></div>
+        <div class="general_info_description animate__animated animate__fadeInUpBig" data-wow-offset="0">
+          <?= $general_info['description'] ?>
+        </div>
       </div>
     </div>
   </section>
 </main>
+<script>
+
+</script>
 <?php get_footer(); ?>
