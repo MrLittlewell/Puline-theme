@@ -14,7 +14,14 @@ $(document).ready(function () {
     mode: 'fade',
   });
 
+  $('#active-search').click(function() {
+    $('body').addClass('show-search');
+  })
 
+  $('#close-search').click(function() {
+    $('body').removeClass('show-search');
+    $('.search-form input').val('')
+  })
   $('.product-order-button').click(function () {
     const prodName = $('.single_product_title').text();
     const prodSize = $('.product-size span:nth-child(2)').text();

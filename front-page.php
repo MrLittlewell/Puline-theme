@@ -86,6 +86,9 @@ $singleCategory = get_field('recommended_products', 8);
       </div>
     </div>
   </section>
+  <section>
+    <?= do_shortcode('[instagram-feed]'); ?>
+  </section>
 </main>
 <script>
 

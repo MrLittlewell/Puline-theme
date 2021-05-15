@@ -6,10 +6,25 @@ body {
   font-family: 'Jura', sans-serif;
   font-size: 16px;
   color: #1f1f1f;
+  overflow-x: hidden;
 }
+
+body.show-search .search-bar {
+  top: 0;
+}
+
+body.show-search .overtview {
+  display: block;
+}
+
+body.show-search {
+  overflow: hidden;
+}
+
 .start_hidden {
   opacity: 0;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -18,8 +33,70 @@ a {
   text-decoration: none;
 }
 
+header ul {
+  list-style: none;
+}
+
 #header {
   color: #222;
+}
+
+.header-actions {
+  display: flex;
+  width: 100px;
+}
+
+.header-actions svg {
+  width: 17px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+#close-search {
+  width: 17px;
+  cursor: pointer;
+}
+
+.search-bar {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  z-index: 200;
+  background-color: #fbfbfb;
+  border-bottom: 0.01rem solid #dfdfdf;
+  top: -100%;
+  left: 0;
+  transition: all .3s ease-in-out;
+  display: flex;
+  align-items: center;
+  padding: 10px 5rem;
+}
+.search-contaner {
+  display: flex;
+  width: 100%;
+}
+.search-contaner form,
+.search-contaner form input {
+  width: 100%;
+}
+.search-contaner form input {
+  border: none;
+  background-color: inherit;
+  font-size: 20px;
+  outline: none;
+  font-family: inherit;
+  height: 90px;
+}
+.overtview {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 190;
+  transition: all .3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
 }
 
 #main-wrapper {
@@ -1043,10 +1120,12 @@ a.link:hover::before {
   padding: 0 60px;
   position: relative;
 }
+
 .category-menu h3 {
   font-size: 30px;
   margin: 0;
 }
+
 @media (max-width: 1500px) {
   .main-feature-container .right-block .info-content {
     width: calc((100% / 3) * 2.9);
