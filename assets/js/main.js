@@ -34,11 +34,35 @@ $(document).ready(function () {
     $('.table-article').html(prodArt);
     $('.table-compl').html(prodComp);
     $('.table-price').html(prodPrice);
+
+    $('input[name="prodName"]').val(prodName.trim())
+    $('input[name="prodSize"]').val(prodSize.trim())
+    $('input[name="prodArticle"]').val(prodArt.trim())
+    $('input[name="prodType"]').val(prodComp.trim())
+    $('input[name="prodPrice"]').val(prodPrice.trim())
     
     $(this).modal({
       fadeDuration: 400,
     });
   });
+
+  $('input[name="f-name"]').change(function(e) {
+    $('input[name="userName"]').val(e.target.value)
+  })
+  $('input[name="f-email"]').change(function(e) {
+    $('input[name="userEmail"]').val(e.target.value)
+  })
+  $('input[name="f-phone"]').change(function(e) {
+    $('input[name="userPhone"]').val(e.target.value)
+  })
+  $('.set-form').click(function() {
+    $('input[value="Submit"]').click();
+
+    setTimeout(() => {
+      const response = $('.wpcf7-response-output').text();
+      $('.response-message').html(response);
+    },300)
+  })
 
 
   $('select').niceSelect();

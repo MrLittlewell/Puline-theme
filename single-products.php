@@ -274,9 +274,13 @@
       <label for="">Телефон</label>
       <input type="text" name="f-phone" class="form-control" autocomplete="off">
     </div>
-    <button type="submit" class="set-form">
+    <div class="set-form">
       оформить заказ
-    </button>
+    </div>
+    <span class="response-message"></span>
   </form>
+  <div class="hidden-form">
+  <?= do_shortcode('[contact-form-7 id="283" title="Форма заявки"]');?>
+  </div>
 </div>
 <?php get_footer(); ?>
