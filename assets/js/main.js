@@ -8,17 +8,17 @@ $(document).ready(function () {
     live: true // default
   })
   wow.init();
-  
+
   $(".single_product__gallery").lightGallery({
     speed: 500,
     mode: 'fade',
   });
 
-  $('#active-search').click(function() {
+  $('#active-search').click(function () {
     $('body').addClass('show-search');
   })
 
-  $('#close-search').click(function() {
+  $('#close-search').click(function () {
     $('body').removeClass('show-search');
     $('.search-form input').val('')
   })
@@ -40,22 +40,22 @@ $(document).ready(function () {
     $('input[name="prodArticle"]').val(prodArt.replace(/\s+/g, ' ').trim())
     $('input[name="prodType"]').val(prodComp.replace(/\s+/g, ' ').trim())
     $('input[name="prodPrice"]').val(prodPrice.replace(/\s+/g, ' ').trim())
-    
+
     $(this).modal({
       fadeDuration: 400,
     });
   });
 
-  $('input[name="f-name"]').change(function(e) {
+  $('input[name="f-name"]').change(function (e) {
     $('input[name="userName"]').val(e.target.value)
   })
-  $('input[name="f-email"]').change(function(e) {
+  $('input[name="f-email"]').change(function (e) {
     $('input[name="userEmail"]').val(e.target.value)
   })
-  $('input[name="f-phone"]').change(function(e) {
+  $('input[name="f-phone"]').change(function (e) {
     $('input[name="userPhone"]').val(e.target.value)
   })
-  $('.set-form').click(function() {
+  $('.set-form').click(function () {
     $('input[value="Submit"]').click();
 
     setTimeout(() => {
@@ -65,7 +65,7 @@ $(document).ready(function () {
       $('.response-message').addClass(status)
       $('.response-message').html(response);
 
-      if(status === 'resetting' || status === 'sent') {
+      if (status === 'resetting' || status === 'sent') {
         setTimeout(() => {
           $('#do-order .close-modal').click()
         }, 2000)
@@ -101,7 +101,7 @@ $(document).ready(function () {
     },
     breakpoints: {
       550: {
-      
+
       },
       890: {
 
@@ -120,7 +120,7 @@ $(document).ready(function () {
     navigation: {
       nextEl: ".recommended-container .swiper-button-next",
       prevEl: ".recommended-container .swiper-button-prev",
-    },    breakpoints: {
+    }, breakpoints: {
       700: {
         slidesPerView: '1',
       },
@@ -138,7 +138,7 @@ $(document).ready(function () {
       const stuffId = this.dataset.id;
       const hasFavorites = localStorage.getItem('favorites');
       if (hasFavorites !== null) {
-        let arr = JSON.parse(hasFavorites); 
+        let arr = JSON.parse(hasFavorites);
         const combine = [...arr, stuffId];
         let uniqueItems = [...new Set(combine)];
         const update = JSON.stringify(uniqueItems);
@@ -217,6 +217,17 @@ $(document).ready(function () {
     } else {
     }
   });
+
+  $('.has-child.hide').parent().addClass('children hide');
+  $('.ultimate-menu .children ul').hide()
+  $('.has-child.hide').parent().append(`<svg viewBox="0 0 496 496" >
+<path d="M488,240H256V8c0-4.418-3.582-8-8-8s-8,3.582-8,8v232H8c-4.418,0-8,3.582-8,8s3.582,8,8,8h232v232c0,4.418,3.582,8,8,8
+  s8-3.582,8-8V256h232c4.418,0,8-3.582,8-8S492.418,240,488,240z"/>
+</svg>`);
+
+$('.ultimate-menu svg').click(function() {
+  $(this).parent().children('ul').fadeToggle('fast', 'linear')
+})
 });
 
 

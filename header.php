@@ -49,11 +49,12 @@ $social_networks = get_field('social_networks', 'option');
 						'menu' => 'header_and_footer_menu',
 						'theme_location' => 'header_and_footer_menu',
 					]); ?>
-				</div>
-				<div class="category-menu">
+									<div class="category-menu">
 					<h3>Категории</h3>
 					<?= build_custom_category_tree($catIdOfPost, $rootIdOfCat) ?>
 				</div>
+				</div>
+
 				<div class="contact_infos">
 					<p> <?= $address ?> </p>
 					<a class="link" href="mailto:<?= $email ?>"><?= $email ?></a>
