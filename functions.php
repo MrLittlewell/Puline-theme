@@ -186,6 +186,8 @@ function custom_register_post_types()
       ],
       'menu_icon'     => $post_type['menu_icon'],
       'public'        => true,
+      'exclude_from_search'   => $post_type['post_type_name'] === 'material' ? true : false,
+      'publicly_queryable'    => $post_type['post_type_name'] === 'material' ? false : true,
       'has_archive'   => $post_type["has_archive"],
       'menu_position' => 5,
       'show_in_rest'  => true,

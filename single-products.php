@@ -224,7 +224,7 @@
               </div>
             <?php endforeach; ?>
           </div>
-          <a class="product-order-button" href="#do-order" data-modal>
+          <a class="product-order-button" href="#do-order" data-modal >
             заказать
           </a>
         </div>
@@ -280,7 +280,7 @@
     <span class="response-message"></span>
   </form>
   <div class="hidden-form">
-  <?= do_shortcode('[contact-form-7 id="283" title="Форма заявки"]');?>
+  <?= do_shortcode('[contact-form-7 id="419" title="Форма заявки"]');?>
   </div>
 </div>
 <?php get_footer(); ?>

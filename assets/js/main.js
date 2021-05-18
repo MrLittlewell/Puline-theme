@@ -35,11 +35,11 @@ $(document).ready(function () {
     $('.table-compl').html(prodComp);
     $('.table-price').html(prodPrice);
 
-    $('input[name="prodName"]').val(prodName.trim())
-    $('input[name="prodSize"]').val(prodSize.trim())
-    $('input[name="prodArticle"]').val(prodArt.trim())
-    $('input[name="prodType"]').val(prodComp.trim())
-    $('input[name="prodPrice"]').val(prodPrice.trim())
+    $('input[name="prodName"]').val(prodName.replace(/\s+/g, ' ').trim())
+    $('input[name="prodSize"]').val(prodSize.replace(/\s+/g, ' ').trim())
+    $('input[name="prodArticle"]').val(prodArt.replace(/\s+/g, ' ').trim())
+    $('input[name="prodType"]').val(prodComp.replace(/\s+/g, ' ').trim())
+    $('input[name="prodPrice"]').val(prodPrice.replace(/\s+/g, ' ').trim())
     
     $(this).modal({
       fadeDuration: 400,
@@ -59,9 +59,19 @@ $(document).ready(function () {
     $('input[value="Submit"]').click();
 
     setTimeout(() => {
+      const status = $('.hidden-form form').attr('data-status');
       const response = $('.wpcf7-response-output').text();
+
+      $('.response-message').addClass(status)
       $('.response-message').html(response);
-    },300)
+
+      if(status === 'resetting' || status === 'sent') {
+        setTimeout(() => {
+          $('#do-order .close-modal').click()
+        }, 2000)
+      }
+
+    }, 300)
   })
 
 
@@ -123,19 +133,27 @@ $(document).ready(function () {
     }
   });
 
-  $('.favorite__icon').click(function () {
-    const stuffId = this.dataset.id;
-    const hasFavorites = localStorage.getItem('favorites');
-    if (hasFavorites !== null) {
-      let arr = JSON.parse(hasFavorites)
-      const combine = [...arr, stuffId];
-      let uniqueItems = [...new Set(combine)];
-      const update = JSON.stringify(uniqueItems);
-      localStorage.setItem('favorites', update);
-    } else {
-      const init = JSON.stringify([stuffId]);
-      localStorage.setItem('favorites', init);
-    }
+  function addToFavorite() {
+    $('.favorite__icon').click(function () {
+      const stuffId = this.dataset.id;
+      const hasFavorites = localStorage.getItem('favorites');
+      if (hasFavorites !== null) {
+        let arr = JSON.parse(hasFavorites); 
+        const combine = [...arr, stuffId];
+        let uniqueItems = [...new Set(combine)];
+        const update = JSON.stringify(uniqueItems);
+        localStorage.setItem('favorites', update);
+      } else {
+        const init = JSON.stringify([stuffId]);
+        localStorage.setItem('favorites', init);
+      }
+    })
+  }
+
+  addToFavorite();
+
+  $(document).on('DOMSubtreeModified', '.search-category', function () {
+    addToFavorite();
   })
 
   let classUnderCategory = $('.under-category span');
